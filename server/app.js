@@ -85,4 +85,13 @@ app.use(function(req, res) {
 const Product = require("./models/Product");
 app.use("/api/product", require("./routes/crud")(Product));
 
+// var schedule = require('node-schedule');
+// var rule = new schedule.RecurrenceRule();
+// rule.second = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9,41,42,43];
+
+// var j = schedule.scheduleJob(rule, function(){
+//   console.log('ok');
+//   });
+ 
+
 module.exports = app;

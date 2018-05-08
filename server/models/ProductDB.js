@@ -1,15 +1,13 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const productSchema = new Schema(
+const productDBSchema = new Schema(
   {
     name: String,
     brand: String,
     code: String,
     price: Number,
     measure: String,
-    dueDate: Date,
-    insertDate: Date,
     category: {
       type: String,
       enum: ["Carne", "Pescado", "Fruta", "Verdura", "Lácteo"]
@@ -26,5 +24,5 @@ const productSchema = new Schema(
   }
 );
 
-const Product = mongoose.model("Product", productSchema);
-module.exports = Product;
+const ProductDB = mongoose.model("ProductDB", productDBSchema);
+module.exports = ProductDB;
