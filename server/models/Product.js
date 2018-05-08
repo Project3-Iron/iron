@@ -10,7 +10,10 @@ const productSchema = new Schema(
     //nutricional_info
     dueDate: Date,
     insertDate: Date,
-    category: { type: String, enum: [""] },
+    category: {
+      type: String,
+      enum: ["Carne", "Pescado", "Fruta", "Verdura", "Lácteo"]
+    },
     quantity: Number,
     status: Boolean,
     ingredients: String
