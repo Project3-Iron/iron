@@ -82,4 +82,7 @@ app.use(function(req, res) {
   res.sendfile(__dirname + "/public/index.html");
 });
 
+const Product = require("./models/Product");
+app.use("/api/product", require("./routes/crud")(Product));
+
 module.exports = app;
