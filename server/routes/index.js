@@ -10,9 +10,9 @@ router.get('/', (req, res, next) => {
 router.get('/rfid', (req, res, next) => {
 
   console.log('Ready!!!');
-  rc522(function (rfidSerialNumber) {
-    console.log(rfidSerialNumber);
-  });
+  // rc522(function (rfidSerialNumber) {
+  //   console.log(rfidSerialNumber);
+  // });
 })
 
 module.exports = router;
