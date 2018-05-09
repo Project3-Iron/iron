@@ -13,7 +13,6 @@ const cors = require("cors");
 const Device = require("./models/Device");
 const ensureLoggedIn = require("./middlewares/ensureLoggedIn.js");
 
-
 const axios = require("axios");
 mongoose.Promise = Promise;
 mongoose
@@ -61,9 +60,9 @@ app.use(
 require("./passport")(app);
 
 app.use((req, res, next) => {
-  res.locals.user = req.user
-  next()
-})
+  res.locals.user = req.user;
+  next();
+});
 
 // Express View engine setup
 app.use(
@@ -94,7 +93,7 @@ const extended = require("./routes/extendedDevices");
 app.use("/api/device/mydevices", extended);
 
 const deviceRouter = require("./routes/crud")(Device);
-app.use("/api/device",ensureLoggedIn(), deviceRouter);
+app.use("/api/device", ensureLoggedIn(), deviceRouter);
 
 //,ensureLoggedIn()
 app.use("/api/product", prodRouter);

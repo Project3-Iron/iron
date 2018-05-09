@@ -12,6 +12,8 @@ const logInPromise = (user, req) => new Promise((resolve,reject) => {
 });  
 
 router.post('/signup', (req, res, next) => {
+
+    console.log(req.body)
     const {username, password} = req.body;
   
     if (!username || !password) {
