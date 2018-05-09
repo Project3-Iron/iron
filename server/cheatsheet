@@ -1,0 +1,45 @@
+AUTH: api/auth
+
+signup    POST  user
+
+login     POST  user
+
+logout    GET   message
+
+loggedin  GET   user
+
+
+PRODUCT: api/product
+
+/         GET     all products
+
+/         POST    create new product
+
+/:id      DELETE  delete product
+
+/:id      GET     retrieve product
+
+/:id      PUT     update product
+
+
+DEVICE: api/device
+
+/         GET     all devices
+
+/         POST    create new device
+
+/:id      DELETE  delete device
+
+/:id      GET     retrieve device
+
+/:id      PUT     update device
+
+
+EXTENDED device: api/device/mydevices
+
+/         GET     all devices => registered user
+
+
+
+
+
