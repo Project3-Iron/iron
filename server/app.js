@@ -20,6 +20,8 @@ mongoose
   .connect(process.env.DBURL, { useMongoClient: true })
   .then(() => {
     console.log("Connected to Mongo!");
+
+
   })
   .catch(err => {
     console.error("Error connecting to mongo", err);
@@ -102,5 +104,48 @@ app.use("/api/product", prodRouter);
 app.use(function(req, res) {
   res.sendfile(__dirname + "/public/index.html");
 });
+
+
+console.log('Ready!!!');
+
+rc522(function(rfidSerialNumber){
+    console.log('El codigo es: ',rfidSerialNumber);
+	findAndCreate(rfidSerialNumber);
+});
+
+
+const findAndCreate = (rfid) => {
+  ProductDB.findOne({
+    code: rfid
+  }).then(e => {
+    Product.findOne({code: e.code}).then( item => {
+      if(item){
+        item.status = !item.status
+        item.save(()=>{
+          console.log(`Status cambiado`);
+        });
+      }else{
+
+        let newProduct = new Product({
+          name: e.name,
+          brand: e.brand,
+          code: e.code,
+          price: e.price,
+          measure: e.measure,
+          dueDate: new Date(new Date().getTime() + 24 * 60 * 60 * 1000 * 3),
+          insertDate: Date.now(),
+          category: e.category,
+          quantity: e.quantity,
+          status: true,
+          ingredients: e.ingredients
+        });
+        newProduct.save(() => {
+          console.log(`Producto creado`);
+        });
+      }
+    })
+  }).catch(e => console.log(e));
+}
+
 
 module.exports = app;
