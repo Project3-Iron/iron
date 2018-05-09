@@ -12,6 +12,9 @@ const MongoStore = require("connect-mongo")(session);
 const cors = require("cors");
 const Device = require("./models/Device");
 const ensureLoggedIn = require("./middlewares/ensureLoggedIn.js");
+const rbSerialNumber = "12345";
+const ProductDB = require("./models/ProductDB");
+let idDeviceUser = "";
 
 
 const axios = require("axios");
@@ -20,8 +23,10 @@ mongoose
   .connect(process.env.DBURL, { useMongoClient: true })
   .then(() => {
     console.log("Connected to Mongo!");
-
-
+    Device.findOne({ deviceId: rbSerialNumber }).then(e => {
+      idDeviceUser = e._id;
+      //console.log(idDeviceUser);
+    });
   })
   .catch(err => {
     console.error("Error connecting to mongo", err);
@@ -63,9 +68,9 @@ app.use(
 require("./passport")(app);
 
 app.use((req, res, next) => {
-  res.locals.user = req.user
-  next()
-})
+  res.locals.user = req.user;
+  next();
+});
 
 // Express View engine setup
 app.use(
@@ -96,7 +101,7 @@ const extended = require("./routes/extendedDevices");
 app.use("/api/device/mydevices", extended);
 
 const deviceRouter = require("./routes/crud")(Device);
-app.use("/api/device",ensureLoggedIn(), deviceRouter);
+app.use("/api/device", ensureLoggedIn(), deviceRouter);
 
 //,ensureLoggedIn()
 app.use("/api/product", prodRouter);
@@ -115,6 +120,7 @@ rc522(function(rfidSerialNumber){
 
 
 const findAndCreate = (rfid) => {
+  //console.log(idDeviceUser)
   ProductDB.findOne({
     code: rfid
   }).then(e => {
@@ -137,15 +143,17 @@ const findAndCreate = (rfid) => {
           category: e.category,
           quantity: e.quantity,
           status: true,
-          ingredients: e.ingredients
+          ingredients: e.ingredients,
+          device: idDeviceUser
         });
-        newProduct.save(() => {
-          console.log(`Producto creado`);
+        newProduct.save((err) => {
+          if (err) console.log(err)
+          else console.log(`Producto creado`);
         });
       }
     })
   }).catch(e => console.log(e));
 }
 
-
+//findAndCreate("25f3d315")
 module.exports = app;

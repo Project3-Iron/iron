@@ -32,8 +32,9 @@ const findAndCreate = rfid => {
         ingredients: e.ingredients
       });
 
-      newProduct.save(() => {
-        console.log(`Producto creado`);
+      newProduct.save((err) => {
+        if(err) console.log(err)
+       else console.log(`Producto creado`);
       });
     })
     .catch(e => console.log(e));
