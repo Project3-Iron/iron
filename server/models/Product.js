@@ -17,7 +17,7 @@ const productSchema = new Schema(
     quantity: Number,
     status: Boolean,
     ingredients: String,
-    user: { type: Schema.Types.ObjectId, ref: "User" }
+    device: { type: Schema.Types.ObjectId, ref: "Device" }
   },
   {
     timestamps: {
