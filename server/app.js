@@ -15,6 +15,7 @@ const ensureLoggedIn = require("./middlewares/ensureLoggedIn.js");
 const rbSerialNumber = "12345";
 const ProductDB = require("./models/ProductDB");
 let idDeviceUser = "";
+const rc522 = require("rc522");
 
 
 const axios = require("axios");

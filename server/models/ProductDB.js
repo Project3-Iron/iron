@@ -10,7 +10,7 @@ const productDBSchema = new Schema(
     measure: String,
     category: {
       type: String,
-      enum: ["Carne", "Pescado", "Fruta", "Verdura", "Lácteo"]
+      enum: ["Carne", "Pescado", "Fruta", "Verdura", "Lácteo", "Otros"]
     },
     quantity: Number,
     status: Boolean,
