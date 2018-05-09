@@ -1,0 +1,15 @@
+<div class="login-wrapper">
+  <form class="login">
+    <label class="title">
+      <h3 class="welcome">Welcome to Iron</h3>
+      <h5 class="hint">Create your user now</h5>
+    </label>
+    <div class="login-group">
+      <input [(ngModel)]="formInfo.username" name="username" class="username" type="text" id="login_username" placeholder="Username">
+      <input [(ngModel)]="formInfo.password" name="password" class="password" type="password" id="login_password" placeholder="Password">
+
+      <button type="submit" (click)="signup()" class="btn btn-primary">SIGNUP</button>
+      <a [routerLink]="['/login']" class="signup">Go to login</a>
+    </div>
+  </form>
+</div>

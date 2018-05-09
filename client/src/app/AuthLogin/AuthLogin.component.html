@@ -1,0 +1,18 @@
+<div class="login-wrapper">
+    <form class="login">
+        <label class="title">
+            <h3 class="welcome">Welcome to Iron</h3>
+            <h5 class="hint">Use your username to sign in</h5>
+        </label>
+        <div class="login-group">
+            <input class="username" [(ngModel)]="formInfo.username" type="text" id="login_username" placeholder="Username" name ="username">
+            <input class="password" [(ngModel)]="formInfo.password" type="password" id="login_password" placeholder="Password" name="password">
+            <div *ngIf="error">
+                <p class="error active">{{error}}</p>
+            </div>
+
+            <button type="submit" class="btn btn-primary" (click)="logIn()">Log In</button>
+            <a [routerLink]="['/signup']" class="signup">Create an account</a>
+        </div>
+    </form>
+</div>

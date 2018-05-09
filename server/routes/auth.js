@@ -65,7 +65,7 @@ router.get('/loggedin', (req, res) => {
     }
 });
 
-router.get('/logout', (req, res) => {
+router.post('/logout', (req, res) => {
     if(req.user){
         req.logout();
         return res.status(200).json({message:"User logged out"});

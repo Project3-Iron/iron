@@ -1,0 +1,16 @@
+<div class="login-wrapper">
+    <form class="login">
+      <label class="title">
+        <h3 class="welcome">Welcome to Iron</h3>
+      </label>
+      <div *ngIf="!sessionService.user">
+      <div class="login-group">  
+        <a [routerLink]="['/login']" class="btn btn-primary">Login</a>
+        <a [routerLink]="['/signup']" class="btn btn-primary">Sign Up</a>
+      </div>
+    </div>
+    <div *ngIf="sessionService.user">
+      <button (click)="sessionService.logout().subscribe()">Log Out</button>
+    </div>
+    </form>
+  </div>
