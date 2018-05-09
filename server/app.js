@@ -10,6 +10,9 @@ const path = require("path");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const cors = require("cors");
+const Device = require("./models/Device");
+const ensureLoggedIn = require("./middlewares/ensureLoggedIn.js");
+
 
 const axios = require("axios");
 mongoose.Promise = Promise;
@@ -56,10 +59,11 @@ app.use(
   })
 );
 require("./passport")(app);
-// app.use((req, res, next) => {
-//   res.locals.user = req.user
-//   next()
-// })
+
+app.use((req, res, next) => {
+  res.locals.user = req.user
+  next()
+})
 
 // Express View engine setup
 app.use(
@@ -85,6 +89,14 @@ app.use("/api/auth", authRouter);
 
 const Product = require("./models/Product");
 const prodRouter = require("./routes/crud")(Product);
+
+const extended = require("./routes/extendedDevices");
+app.use("/api/device/mydevices", extended);
+
+const deviceRouter = require("./routes/crud")(Device);
+app.use("/api/device",ensureLoggedIn(), deviceRouter);
+
+//,ensureLoggedIn()
 app.use("/api/product", prodRouter);
 
 app.use(function(req, res) {

@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const deviceSchema = new Schema(
   {
-    deviceId: [String],
+    deviceId: String,
     user: { type: Schema.Types.ObjectId, ref: "User" }
   },
   {
