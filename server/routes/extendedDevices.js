@@ -3,8 +3,6 @@ const router = express.Router();
 const User = require('../models/User');
 const Device = require('../models/Device');
 
-
-
 router.get('/', (req,res) => {
 
   Device.find({user: res.locals.user._id}).then(items => {

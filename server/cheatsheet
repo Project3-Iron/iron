@@ -1,38 +1,38 @@
 AUTH: api/auth
 
-signup    POST  user
+signup    POST  user      need: username, password
 
-login     POST  user
+login     POST  user      need: username, password
 
-logout    GET   message
+logout    GET   message   need: userlogged
 
-loggedin  GET   user
+loggedin  GET   user      need: userlogged
 
 
-PRODUCT: api/product
+PRODUCT (not in DB): api/product
 
 /         GET     all products
 
-/         POST    create new product
+/         POST    create new product => product created
 
-/:id      DELETE  delete product
+/:id      DELETE  delete product => SUCCESSFULL delete + id
 
-/:id      GET     retrieve product
+/:id      GET     retrieve product  => product 
 
-/:id      PUT     update product
+/:id      PUT     update product =>  product updated
 
 
 DEVICE: api/device
 
-/         GET     all devices
+/         GET     all devices (in the app)
 
-/         POST    create new device
+/         POST    create new device => device created
 
-/:id      DELETE  delete device
+/:id      DELETE  delete device => SUCCESSFULL delete + id
 
-/:id      GET     retrieve device
+/:id      GET     retrieve device => device
 
-/:id      PUT     update device
+/:id      PUT     update device  => device updated 
 
 
 EXTENDED device: api/device/mydevices
