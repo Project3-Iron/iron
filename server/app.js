@@ -11,6 +11,7 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const cors = require("cors");
 
+const axios = require("axios");
 mongoose.Promise = Promise;
 mongoose
   .connect(process.env.DBURL, { useMongoClient: true })
@@ -55,6 +56,11 @@ app.use(
   })
 );
 require("./passport")(app);
+app.use((req, res, next) => {
+  res.locals.user = req.user
+  next()
+})
+
 
 // Express View engine setup
 app.use(
@@ -78,12 +84,15 @@ app.use("/", index);
 const authRouter = require("./routes/auth");
 app.use("/api/auth", authRouter);
 
+const Product = require("./models/Product");
+const prodRouter = require("./routes/crud")(Product);
+app.use("/api/product", prodRouter);
+
+
 app.use(function(req, res) {
   res.sendfile(__dirname + "/public/index.html");
 });
 
-const Product = require("./models/Product");
-app.use("/api/product", require("./routes/crud")(Product));
 
 // var schedule = require('node-schedule');
 // var rule = new schedule.RecurrenceRule();
@@ -93,5 +102,56 @@ app.use("/api/product", require("./routes/crud")(Product));
 //   console.log('ok');
 //   });
  
+//raspberry code
+const rc522 = require("rc522");
 
+const ProductDB = require("./models/ProductDB");
+//const Product = require("./models/Product");
+
+console.log('Ready!!!');
+
+
+
+const findAndCreate = (rfid) => {
+ // console.log("entra en la funcion")
+//console.log(res.locals)
+  ProductDB.findOne({
+    code: rfid
+  }).then(e => {
+    Product.findOne({code: e.code}).then( item => {
+      if(item){
+        item.status = !item.status
+        item.save(()=>{
+          console.log(`Status cambiado`);
+        });
+      }else{
+
+        let newProduct = new Product({
+          name: e.name,
+          brand: e.brand,
+          code: e.code,
+          price: e.price,
+          measure: e.measure,
+          dueDate: new Date(new Date().getTime() + 24 * 60 * 60 * 1000 * 3),
+          insertDate: Date.now(),
+          category: e.category,
+          quantity: e.quantity,
+          status: true,
+          ingredients: e.ingredients
+        });
+        newProduct.save(() => {
+          console.log(`Producto creado`);
+        });
+      }
+    })
+  }).catch(e => console.log(e));
+}
+//findAndCreate("25f3d315");
+
+const prueba = () => {
+  console.log("prueba axios")
+  axios.get("http://localhost:3000/rfid")
+}
+
+prueba()
 module.exports = app;

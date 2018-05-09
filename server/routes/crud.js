@@ -7,6 +7,7 @@ const simpleCrud = Model => {
 
   // Retrive ALL
   router.get("/", (req, res, next) => {
+    console.log("ENTRA AL CRUD /")
     Model.find()
       .then(objects => res.json(objects))
       .catch(e => next(e));
@@ -36,7 +37,7 @@ const simpleCrud = Model => {
       .catch(e => next(e));
   });
 
-  // Retrive DETAIL
+  // Delete 
   router.delete("/:id", (req, res, next) => {
     Model.findByIdAndRemove(req.params.id)
       .then(() => res.json({ message: `SUCESSFUL DELETE ${req.params.id}` }))
