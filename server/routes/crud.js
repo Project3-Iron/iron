@@ -7,7 +7,6 @@ const simpleCrud = Model => {
 
   // Retrive ALL
   router.get("/", (req, res, next) => {
-    console.log("ENTRA AL CRUD /")
     Model.find()
       .then(objects => res.json(objects))
       .catch(e => next(e));

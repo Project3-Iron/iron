@@ -11,7 +11,10 @@ import { HomeComponent } from './HomeComponent/HomeComponent.component';
 import { AuthSignupComponent } from './AuthSignup/AuthSignup.component';
 import { AuthLoginComponent } from './AuthLogin/AuthLogin.component';
 import { SessionService } from './services/Session.service';
-
+import { InitialWelcomeComponent } from './OnBoarding/InitialWelcome/InitialWelcome.component';
+import { DeviceService } from './services/Device.service';
+import { LinkDeviceComponent } from './OnBoarding/LinkDevice/LinkDevice.component';
+import { LinkOkComponent } from './OnBoarding/LinkOk/LinkOk.component';
 
 
 @NgModule({
@@ -19,7 +22,10 @@ import { SessionService } from './services/Session.service';
     AppComponent,
     HomeComponent,
     AuthSignupComponent,
-    AuthLoginComponent
+    AuthLoginComponent, 
+    InitialWelcomeComponent, 
+    LinkDeviceComponent, 
+    LinkOkComponent
 ],
   imports: [
     BrowserModule,
@@ -28,7 +34,7 @@ import { SessionService } from './services/Session.service';
     RouterModule.forRoot(routes),
     ClarityModule
   ],
-  providers: [SessionService],
+  providers: [SessionService, DeviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
