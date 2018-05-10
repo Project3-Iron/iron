@@ -11,6 +11,8 @@ import { HomeComponent } from './HomeComponent/HomeComponent.component';
 import { AuthSignupComponent } from './AuthSignup/AuthSignup.component';
 import { AuthLoginComponent } from './AuthLogin/AuthLogin.component';
 import { SessionService } from './services/Session.service';
+import { ProductComponent } from './Product/Product.component';
+import { ProductService } from './services/Product.service';
 
 
 
@@ -19,7 +21,8 @@ import { SessionService } from './services/Session.service';
     AppComponent,
     HomeComponent,
     AuthSignupComponent,
-    AuthLoginComponent
+    AuthLoginComponent,
+    ProductComponent
 ],
   imports: [
     BrowserModule,
@@ -28,7 +31,7 @@ import { SessionService } from './services/Session.service';
     RouterModule.forRoot(routes),
     ClarityModule
   ],
-  providers: [SessionService],
+  providers: [SessionService, ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
