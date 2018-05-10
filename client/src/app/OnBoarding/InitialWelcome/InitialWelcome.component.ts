@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { DeviceService } from "../../services/Device.service";
+import { SessionService } from "../../services/Session.service";
 
 @Component({
   selector: "app-InitialWelcome",
@@ -8,6 +9,7 @@ import { DeviceService } from "../../services/Device.service";
 })
 export class InitialWelcomeComponent implements OnInit {
   devices: Array<Object> = [];
+  
   constructor(public deviceService: DeviceService) {}
 
   ngOnInit() {

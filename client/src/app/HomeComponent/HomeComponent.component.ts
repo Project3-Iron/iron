@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.deviceService.getDevicesUser().subscribe(devices => {
+      console.log(devices)
       return (this.devices = devices);
     });
   }

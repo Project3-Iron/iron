@@ -3,10 +3,7 @@
       <label class="title">
         <h3 class="welcome">Welcome to Iron</h3>
       </label>
-<div *ngIf="devices.length === 0">
-    <app-InitialWelcome></app-InitialWelcome>
 
-</div>
 
       <div *ngIf="!sessionService.user">
       <div class="login-group">  
@@ -15,6 +12,10 @@
       </div>
     </div>
     <div *ngIf="sessionService.user">
+        <div *ngIf="devices.length === 0">
+            <app-InitialWelcome></app-InitialWelcome>
+        
+        </div>
       <button (click)="sessionService.logout().subscribe()">Log Out</button>
     </div>
     </form>

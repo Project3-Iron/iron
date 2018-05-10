@@ -24,7 +24,6 @@ export class DeviceService {
   // }
 
   getDevicesUser() {
-    //console.log("entra al SV");
     return this.http
       .get(`${this.BASE_URL}/api/device/mydevices`, this.options)
       .map(res => res.json())
@@ -33,7 +32,7 @@ export class DeviceService {
 
   linkDevice(deviceId) {
     return this.http
-      .post(`${this.BASE_URL}/api/device`, { deviceId }, this.options)
+      .post(`${this.BASE_URL}/api/device`, deviceId, this.options)
       .map(res => res.json())
       .catch(this.handleError);
   }

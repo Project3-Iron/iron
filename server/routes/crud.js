@@ -15,6 +15,7 @@ const simpleCrud = Model => {
   // Create
   router.post("/", (req, res, next) => {
     const obj = _.pick(req.body, fields);
+    
     Model.create(obj)
       .then(object => res.json(object))
       .catch(e => next(e));
