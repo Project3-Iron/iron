@@ -10,9 +10,14 @@ export class ProductService {
 
   constructor(private http: Http) { }
 
+  handleError(e) {
+    return Observable.throw(e.json().message);
+  }
+
   getAllProducts() {
     return this.http.get(`${this.BASE_URL}/api/product`)
-      .map(res => res.json());
+      .map(res => res.json())
+      .catch(this.handleError);
   }
 
 }

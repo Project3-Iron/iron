@@ -10,11 +10,14 @@ import { ProductService } from '../services/Product.service';
 export class ProductComponent implements OnInit {
 
   products: Array<any>;
+  error = '';
 
   constructor(private productService: ProductService, public sessionService: SessionService ) { }
 
   ngOnInit() {
-    this.productService.getAllProducts().subscribe(products => this.products = products);
+    this.productService.getAllProducts().subscribe(
+      products => this.products = products,
+      (err) =>  this.error = err);
   }
 
 }
