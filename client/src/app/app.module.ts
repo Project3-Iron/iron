@@ -14,6 +14,10 @@ import { SessionService } from './services/Session.service';
 import { ProductComponent } from './Product/Product.component';
 import { ProductService } from './services/Product.service';
 
+import { InitialWelcomeComponent } from './OnBoarding/InitialWelcome/InitialWelcome.component';
+import { DeviceService } from './services/Device.service';
+import { LinkDeviceComponent } from './OnBoarding/LinkDevice/LinkDevice.component';
+import { LinkOkComponent } from './OnBoarding/LinkOk/LinkOk.component';
 
 
 @NgModule({
@@ -21,8 +25,11 @@ import { ProductService } from './services/Product.service';
     AppComponent,
     HomeComponent,
     AuthSignupComponent,
-    AuthLoginComponent,
-    ProductComponent
+    ProductComponent,
+    AuthLoginComponent, 
+    InitialWelcomeComponent, 
+    LinkDeviceComponent, 
+    LinkOkComponent
 ],
   imports: [
     BrowserModule,
@@ -31,7 +38,7 @@ import { ProductService } from './services/Product.service';
     RouterModule.forRoot(routes),
     ClarityModule
   ],
-  providers: [SessionService, ProductService],
+  providers: [SessionService, DeviceService, ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

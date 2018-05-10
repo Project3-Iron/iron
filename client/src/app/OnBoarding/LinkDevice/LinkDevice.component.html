@@ -1,0 +1,11 @@
+ <form>
+    <section class="form-block">
+        <label>Formulario para enlazar un dispositivo</label>
+        <div class="form-group">
+            <label for="deviceId">Id del dispositivo</label>
+            <input type="text" [(ngModel)]="deviceId" name="deviceId" placeholder="Introduce el Id" size="45">
+        </div>
+     
+        <button type="submit" (click)="linkDevice()" class="btn btn-primary">Enlazar</button>
+    </section>
+</form>

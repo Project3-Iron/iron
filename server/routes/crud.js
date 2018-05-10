@@ -7,7 +7,6 @@ const simpleCrud = Model => {
 
   // Retrive ALL
   router.get("/", (req, res, next) => {
-    console.log("ENTRA AL CRUD /")
     Model.find()
       .then(objects => res.json(objects))
       .catch(e => next(e));
@@ -16,6 +15,7 @@ const simpleCrud = Model => {
   // Create
   router.post("/", (req, res, next) => {
     const obj = _.pick(req.body, fields);
+    
     Model.create(obj)
       .then(object => res.json(object))
       .catch(e => next(e));
