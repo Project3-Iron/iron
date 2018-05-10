@@ -132,7 +132,6 @@ const findAndCreate = (rfid) => {
           console.log(`Status cambiado`);
         });
       }else{
-
         let newProduct = new Product({
           name: e.name,
           brand: e.brand,

@@ -4,7 +4,7 @@ signup    POST  user
 
 login     POST  user
 
-logout    GET   message
+logout    POST   message
 
 loggedin  GET   user
 
