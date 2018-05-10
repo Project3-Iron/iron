@@ -7,7 +7,10 @@
     <div class="login-group">
       <input [(ngModel)]="formInfo.username" name="username" class="username" type="text" id="login_username" placeholder="Username">
       <input [(ngModel)]="formInfo.password" name="password" class="password" type="password" id="login_password" placeholder="Password">
-
+      
+      <div *ngIf="error">
+        <p class="error active">{{error}}</p>
+    </div>
       <button type="submit" (click)="signup()" class="btn btn-primary">SIGNUP</button>
       <a [routerLink]="['/login']" class="signup">Go to login</a>
     </div>
