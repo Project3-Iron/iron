@@ -16,7 +16,8 @@ const rbSerialNumber = "12345";
 const ProductDB = require("./models/ProductDB");
 let idDeviceUser = "";
 const rc522 = require("rc522");
-
+const moment = require("moment");
+var schedule = require("node-schedule");
 
 const axios = require("axios");
 mongoose.Promise = Promise;
@@ -111,49 +112,95 @@ app.use(function(req, res) {
   res.sendfile(__dirname + "/public/index.html");
 });
 
+console.log("Ready!!!");
 
-console.log('Ready!!!');
+// rc522(function(rfidSerialNumber) {
+//   console.log("El codigo es: ", rfidSerialNumber);
+//   findAndCreate(rfidSerialNumber);
+// });
 
-rc522(function(rfidSerialNumber){
-    console.log('El codigo es: ',rfidSerialNumber);
-	findAndCreate(rfidSerialNumber);
-});
+const remainingDates = date => {
+  moment.locale("es");
+  let days = moment(date, "YYYYMMDD").fromNow();
 
+  if (days.includes("hora")) {
+    days = "hoy";
+  } else if (days.includes("hace")) {
+    days = "caducado";
+  }
+  return days;
+};
 
-const findAndCreate = (rfid) => {
+const findAndCreate = rfid => {
   //console.log(idDeviceUser)
   ProductDB.findOne({
     code: rfid
-  }).then(e => {
-    Product.findOne({code: e.code}).then( item => {
-      if(item){
-        item.status = !item.status
-        item.save(()=>{
-          console.log(`Status cambiado`);
-        });
-      }else{
-        let newProduct = new Product({
-          name: e.name,
-          brand: e.brand,
-          code: e.code,
-          price: e.price,
-          measure: e.measure,
-          dueDate: new Date(new Date().getTime() + 24 * 60 * 60 * 1000 * 3),
-          insertDate: Date.now(),
-          category: e.category,
-          quantity: e.quantity,
-          status: true,
-          ingredients: e.ingredients,
-          device: idDeviceUser
-        });
-        newProduct.save((err) => {
-          if (err) console.log(err)
-          else console.log(`Producto creado`);
-        });
-      }
-    })
-  }).catch(e => console.log(e));
-}
+  })
+    .then(e => {
+      Product.findOne({ code: e.code }).then(item => {
+        if (item) {
+          item.status = !item.status;
+          item.save(() => {
+            console.log(`Status cambiado`);
+          });
+        } else {
+          //   let remainingDates = remainingDates(e.dueDate);
+          let dueDate = new Date(
+            new Date().getTime() + 24 * 60 * 60 * 1000 * 3
+          );
 
-//findAndCreate("25f3d315")
+          let newProduct = new Product({
+            name: e.name,
+            brand: e.brand,
+            code: e.code,
+            price: e.price,
+            measure: e.measure,
+            dueDate: dueDate,
+            insertDate: Date.now(),
+            category: e.category,
+            quantity: e.quantity,
+            status: true,
+            ingredients: e.ingredients,
+            device: idDeviceUser,
+            remainingDays: remainingDates(dueDate)
+          });
+          newProduct.save(err => {
+            if (err) console.log(err);
+            else console.log(`Producto creado`);
+          });
+        }
+      });
+    })
+    .catch(e => console.log(e));
+};
+
+//findAndCreate("25f3d315");
+
+//1 vez al día => actualiza el campo remainingDays
+
+const updateRemainingDays = () => {
+  Device.findOne({
+    deviceId: rbSerialNumber
+  })
+    .then(e => {
+      Product.find({ device: e._id }).then(items => {
+        items.forEach(item => {
+          item.remainingDays = remainingDates(item.dueDate);
+          item.save();
+        });
+      });
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
+var j = schedule.scheduleJob(
+  { hour: 14, minute: 30, dayOfWeek: 0 },
+  function() {
+    console.log("Time for tea!");
+  }
+);
+
+updateRemainingDays();
 module.exports = app;
