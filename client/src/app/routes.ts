@@ -5,6 +5,7 @@ import { AuthLoginComponent } from "./AuthLogin/AuthLogin.component";
 import { LinkDeviceComponent } from "./OnBoarding/LinkDevice/LinkDevice.component";
 import { LinkOkComponent } from "./OnBoarding/LinkOk/LinkOk.component";
 import { ProductComponent } from "./Product/Product.component";
+import { RecipesComponent } from "./Recipes/Recipes.component";
 
 export const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
@@ -13,5 +14,6 @@ export const routes: Routes = [
   { path: "login", component: AuthLoginComponent },
   { path: "device/config", component: LinkDeviceComponent },
   { path: "device/thanks", component: LinkOkComponent },
-  { path: "products", component: ProductComponent }
+  { path: "products", component: ProductComponent },
+  { path: "recipes", component: RecipesComponent }
 ];

@@ -19,6 +19,8 @@ import { DeviceService } from './services/Device.service';
 import { LinkDeviceComponent } from './OnBoarding/LinkDevice/LinkDevice.component';
 import { LinkOkComponent } from './OnBoarding/LinkOk/LinkOk.component';
 import { ProductCardComponent } from './Product-card/Product-card.component';
+import { RecipesService } from './services/Recipes.service';
+import { RecipesComponent } from './Recipes/Recipes.component';
 
 
 @NgModule({
@@ -31,7 +33,8 @@ import { ProductCardComponent } from './Product-card/Product-card.component';
     InitialWelcomeComponent,
     LinkDeviceComponent,
     LinkOkComponent,
-    ProductCardComponent
+    ProductCardComponent,
+    RecipesComponent
 ],
   imports: [
     BrowserModule,
@@ -40,7 +43,7 @@ import { ProductCardComponent } from './Product-card/Product-card.component';
     RouterModule.forRoot(routes),
     ClarityModule
   ],
-  providers: [SessionService, DeviceService, ProductService],
+  providers: [SessionService, DeviceService, ProductService, RecipesService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
