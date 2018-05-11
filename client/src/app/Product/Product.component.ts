@@ -24,7 +24,7 @@ export class ProductComponent implements OnInit {
   }
 
   getItem(product) {
-    console.log("PADRE", product)
+    console.log('PADRE', product);
       this.status$ = true;
       if (this.recipes$.indexOf(product) === -1) {
         this.recipes$.push(product);

@@ -18,7 +18,7 @@ import { InitialWelcomeComponent } from './OnBoarding/InitialWelcome/InitialWelc
 import { DeviceService } from './services/Device.service';
 import { LinkDeviceComponent } from './OnBoarding/LinkDevice/LinkDevice.component';
 import { LinkOkComponent } from './OnBoarding/LinkOk/LinkOk.component';
-import { ProductsListComponent } from './Products-list/Products-list.component';
+import { ProductCardComponent } from './Product-card/Product-card.component';
 
 
 @NgModule({
@@ -31,7 +31,7 @@ import { ProductsListComponent } from './Products-list/Products-list.component';
     InitialWelcomeComponent,
     LinkDeviceComponent,
     LinkOkComponent,
-    ProductsListComponent
+    ProductCardComponent
 ],
   imports: [
     BrowserModule,

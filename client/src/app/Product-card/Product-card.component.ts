@@ -1,11 +1,11 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-Products-list',
-  templateUrl: './Products-list.component.html',
-  styleUrls: ['./Products-list.component.css']
+  selector: 'app-Product-card',
+  templateUrl: './Product-card.component.html',
+  styleUrls: ['./Product-card.component.css']
 })
-export class ProductsListComponent implements OnInit {
+export class ProductCardComponent implements OnInit {
 
   @Input() products;
   @Input() status;
@@ -24,3 +24,7 @@ export class ProductsListComponent implements OnInit {
     this.outGetItem.emit(product);
   }
 }
+
+
+
+
