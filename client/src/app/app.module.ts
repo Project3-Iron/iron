@@ -5,7 +5,8 @@ import { HttpModule } from "@angular/http";
 import { routes } from "./routes";
 import { RouterModule } from "@angular/router";
 import { ClarityModule } from "@clr/angular";
-
+import { RecipesService } from './services/Recipes.service';
+import { RecipesComponent } from './Recipes/Recipes.component';
 import { AppComponent } from "./app.component";
 import { HomeComponent } from "./HomeComponent/HomeComponent.component";
 import { AuthSignupComponent } from "./AuthSignup/AuthSignup.component";
@@ -31,8 +32,10 @@ import { MyDevicesComponent } from "./myDevices/myDevices.component";
     MyDevicesComponent,
     InitialWelcomeComponent,
     LinkDeviceComponent,
-    ProductCardComponent
+    ProductCardComponent,
+    RecipesComponent
   ],
+
   imports: [
     BrowserModule,
     FormsModule,
@@ -40,7 +43,7 @@ import { MyDevicesComponent } from "./myDevices/myDevices.component";
     RouterModule.forRoot(routes),
     ClarityModule
   ],
-  providers: [SessionService, DeviceService, ProductService],
+  providers: [SessionService, DeviceService, ProductService, RecipesService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
