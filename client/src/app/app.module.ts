@@ -17,7 +17,6 @@ import { ProductService } from './services/Product.service';
 import { InitialWelcomeComponent } from './OnBoarding/InitialWelcome/InitialWelcome.component';
 import { DeviceService } from './services/Device.service';
 import { LinkDeviceComponent } from './OnBoarding/LinkDevice/LinkDevice.component';
-import { LinkOkComponent } from './OnBoarding/LinkOk/LinkOk.component';
 import { MyDevicesComponent } from './myDevices/myDevices.component';
 
 
@@ -30,7 +29,6 @@ import { MyDevicesComponent } from './myDevices/myDevices.component';
     AuthLoginComponent, 
     InitialWelcomeComponent, 
     LinkDeviceComponent, 
-    LinkOkComponent,
     MyDevicesComponent
 ],
   imports: [
