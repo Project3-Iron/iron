@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const rc522 = require("rc522");
 
+const moment = require("moment")
+
 const ProductDB = require("../models/ProductDB");
 const Product = require("../models/Product");
 
@@ -11,8 +13,14 @@ router.get("/", (req, res, next) => {
 });
 
 router.get("/rfid", (req, res, next) => {
-  console.log(res.locals.user);
+  //console.log(res.locals.user);
   console.log("FUNCIONA");
+  console.log(moment(new Date()).format("YYYY-MM-DD"))
+
+  console.log(moment("2018-05-13", "YYYYMMDD").fromNow())
+
+ console.log( moment("20111031", "YYYYMMDD").fromNow())
+
 });
 
 const findAndCreate = rfid => {
