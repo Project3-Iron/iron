@@ -14,8 +14,12 @@
     <div *ngIf="sessionService.user">
         <div *ngIf="devices.length === 0">
             <app-InitialWelcome></app-InitialWelcome>
-        
         </div>
+
+        <div *ngIf="devices.length != 0">
+          <a [routerLink]="['/device/myDevices']">Ver mis dispositivos</a>
+      </div>
+
       <button (click)="sessionService.logout().subscribe()">Log Out</button>
     </div>
     </form>

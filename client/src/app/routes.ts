@@ -3,8 +3,8 @@ import { HomeComponent } from "./HomeComponent/HomeComponent.component";
 import { AuthSignupComponent } from "./AuthSignup/AuthSignup.component";
 import { AuthLoginComponent } from "./AuthLogin/AuthLogin.component";
 import { LinkDeviceComponent } from "./OnBoarding/LinkDevice/LinkDevice.component";
-import { LinkOkComponent } from "./OnBoarding/LinkOk/LinkOk.component";
 import { ProductComponent } from "./Product/Product.component";
+import { MyDevicesComponent } from "./myDevices/myDevices.component";
 
 export const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
@@ -12,6 +12,6 @@ export const routes: Routes = [
   { path: "signup", component: AuthSignupComponent },
   { path: "login", component: AuthLoginComponent },
   { path: "device/config", component: LinkDeviceComponent },
-  { path: "device/thanks", component: LinkOkComponent },
+  { path: "device/myDevices", component: MyDevicesComponent },
   { path: "products", component: ProductComponent }
 ];

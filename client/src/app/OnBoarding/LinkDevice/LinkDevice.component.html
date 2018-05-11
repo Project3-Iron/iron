@@ -1,11 +1,20 @@
- <form>
-    <section class="form-block">
-        <label>Formulario para enlazar un dispositivo</label>
-        <div class="form-group">
-            <label for="deviceId">Id del dispositivo</label>
-            <input type="text" [(ngModel)]="deviceId" name="deviceId" placeholder="Introduce el Id" size="45">
-        </div>
-     
-        <button type="submit" (click)="linkDevice()" class="btn btn-primary">Enlazar</button>
-    </section>
-</form>
+
+ <div *ngIf="!linkedDevice">
+    <form>
+        <section class="form-block">
+            <label>Formulario para enlazar un dispositivo</label>
+            <div class="form-group">
+                <label for="deviceId">Id del dispositivo</label>
+                <input type="text" [(ngModel)]="deviceId" name="deviceId" placeholder="Introduce el Id" size="45">
+            
+                <label for="enviroment">Environment</label>
+                <input type="text" [(ngModel)]="environment" name="environment" placeholder="Introduce el enviroment" size="45">     
+            </div>   
+            <button type="submit" (click)="linkDevice()" class="btn btn-primary">Enlazar</button>
+        </section>
+    </form>
+ </div>
+
+ <div *ngIf="linkedDevice">
+    <p> tu dispositivo ha sido enlazado con éxito!!!!</p>
+</div>

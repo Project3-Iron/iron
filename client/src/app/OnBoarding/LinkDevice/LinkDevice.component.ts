@@ -9,19 +9,24 @@ import { SessionService } from "../../services/Session.service";
   styleUrls: ["./LinkDevice.component.css"]
 })
 export class LinkDeviceComponent implements OnInit {
-  constructor(public deviceService: DeviceService, public router: Router, public sessionService: SessionService) {}
+  constructor(
+    public deviceService: DeviceService,
+    public router: Router,
+    public sessionService: SessionService
+  ) {}
   deviceId: string = "";
+  environment: String = "";
+  linkedDevice: boolean = false;
   ngOnInit() {}
 
   linkDevice() {
-    let deviceIdUser = 
-    {
-      deviceId: this.deviceId, 
-      user: this.sessionService.user._id
-    }
-    this.deviceService.linkDevice(deviceIdUser).subscribe(
-      (device) => this.router.navigate(['/device/thanks']),
-      err => console.log(err)
-    );
+    let deviceIdUser = {
+      deviceId: this.deviceId,
+      user: this.sessionService.user._id,
+      environment: this.environment
+    };
+    this.deviceService
+      .linkDevice(deviceIdUser)
+      .subscribe(device => (this.linkedDevice = true), err => console.log(err));
   }
 }

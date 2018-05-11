@@ -36,4 +36,11 @@ export class DeviceService {
       .map(res => res.json())
       .catch(this.handleError);
   }
+
+  deleteDevice(deviceId) {
+    return this.http
+      .delete(`${this.BASE_URL}/api/device/${deviceId}`, this.options)
+      .map(res => res.json())
+      .catch(this.handleError);
+  }
 }

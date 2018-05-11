@@ -18,6 +18,7 @@ import { InitialWelcomeComponent } from './OnBoarding/InitialWelcome/InitialWelc
 import { DeviceService } from './services/Device.service';
 import { LinkDeviceComponent } from './OnBoarding/LinkDevice/LinkDevice.component';
 import { LinkOkComponent } from './OnBoarding/LinkOk/LinkOk.component';
+import { MyDevicesComponent } from './myDevices/myDevices.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { LinkOkComponent } from './OnBoarding/LinkOk/LinkOk.component';
     AuthLoginComponent, 
     InitialWelcomeComponent, 
     LinkDeviceComponent, 
-    LinkOkComponent
+    LinkOkComponent,
+    MyDevicesComponent
 ],
   imports: [
     BrowserModule,
