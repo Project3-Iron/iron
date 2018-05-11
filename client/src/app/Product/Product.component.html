@@ -1,9 +1,6 @@
 <h1>Products</h1>
-<!-- <div class="row">
-    <app-Products-list [products]="products$" [status]="status$" [recipes]="recipes$" *ngFor="let e of products";></app-Products-list>
-</div> -->
 
 <div *ngFor="let e of products$">
-    <app-Products-list [products]="e" (outGetItem)="getItem($event)"></app-Products-list>
+    <app-Product-card [products]="e" (outGetItem)="getItem($event)"></app-Product-card>
 </div>
   

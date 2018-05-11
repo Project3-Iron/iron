@@ -13,12 +13,11 @@ import { AuthLoginComponent } from "./AuthLogin/AuthLogin.component";
 import { SessionService } from "./services/Session.service";
 import { ProductComponent } from "./Product/Product.component";
 import { ProductService } from "./services/Product.service";
-
+import { ProductCardComponent } from "./Product-card/Product-card.component";
 import { InitialWelcomeComponent } from "./OnBoarding/InitialWelcome/InitialWelcome.component";
 import { DeviceService } from "./services/Device.service";
 import { LinkDeviceComponent } from "./OnBoarding/LinkDevice/LinkDevice.component";
 import { MyDevicesComponent } from "./myDevices/myDevices.component";
-import { ProductsListComponent } from "./Products-list/Products-list.component";
 
 @NgModule({
   declarations: [
@@ -32,7 +31,7 @@ import { ProductsListComponent } from "./Products-list/Products-list.component";
     MyDevicesComponent,
     InitialWelcomeComponent,
     LinkDeviceComponent,
-    ProductsListComponent
+    ProductCardComponent
   ],
   imports: [
     BrowserModule,
