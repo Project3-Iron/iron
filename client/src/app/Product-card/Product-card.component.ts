@@ -10,6 +10,7 @@ export class ProductCardComponent implements OnInit {
   @Input() products;
   @Input() status;
   @Output() outGetItem: EventEmitter<any> = new EventEmitter();
+  @Output() outGetDelete: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
 
@@ -20,6 +21,11 @@ export class ProductCardComponent implements OnInit {
   outInfo(product) {
     this.status = true;
     this.outGetItem.emit(product);
+  }
+
+  outDelete(product) {
+    this.status = false;
+    this.outGetDelete.emit(product);
   }
 }
 
