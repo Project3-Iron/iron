@@ -1,6 +1,5 @@
 <div *ngFor="let recipe of recipes">
 
   {{recipe.recipe.label}}
-  
+  <button (click)="recipeDetail(recipe)">View more</button>
 </div>
-

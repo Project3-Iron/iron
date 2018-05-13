@@ -20,6 +20,7 @@ import { DeviceService } from "./services/Device.service";
 import { LinkDeviceComponent } from "./OnBoarding/LinkDevice/LinkDevice.component";
 import { MyDevicesComponent } from "./myDevices/myDevices.component";
 import { WindowService } from "./services/Window.service";
+import { RecipeDetailComponent } from './Recipe-detail/Recipe-detail.component';
 
 @NgModule({
   declarations: [
@@ -34,8 +35,9 @@ import { WindowService } from "./services/Window.service";
     InitialWelcomeComponent,
     LinkDeviceComponent,
     ProductCardComponent,
-    RecipesComponent
-  ],
+    RecipesComponent,
+    RecipeDetailComponent,
+],
 
   imports: [
     BrowserModule,

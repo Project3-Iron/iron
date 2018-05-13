@@ -4,6 +4,7 @@ import { ProductService } from "../services/Product.service";
 
 import { Observable } from "rxjs/Rx";
 import { RecipesService } from "../services/Recipes.service";
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-Recipes",
@@ -15,7 +16,8 @@ export class RecipesComponent implements OnInit {
   constructor(
     private productService: ProductService,
     public sessionService: SessionService,
-    private recipesService: RecipesService
+    private recipesService: RecipesService, 
+    public router: Router
   ) {}
 
   ngOnInit() {
@@ -25,5 +27,12 @@ export class RecipesComponent implements OnInit {
       console.log(data.hits)
       
     });
+
+    
+  }
+  recipeDetail(recipe){
+    console.log(recipe)
+    this.recipesService.recipe = recipe;
+    this.router.navigate(['/recipes/detail'])
   }
 }

@@ -8,6 +8,7 @@ export class RecipesService {
 
   productsRecipes: Array<Object> = [];
   concatQuery: String = 'q=';
+  recipe: Object = {}
 
   constructor(private http: Http) {}
 
