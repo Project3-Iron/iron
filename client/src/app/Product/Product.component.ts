@@ -19,7 +19,9 @@ export class ProductComponent implements OnInit {
     private productService: ProductService,
     public sessionService: SessionService,
     public recipesService: RecipesService
-  ) {}
+  ) {
+    console.log('++++++recipes', this.recipes$)
+  }
 
   ngOnInit() {
     this.productService
@@ -31,13 +33,18 @@ export class ProductComponent implements OnInit {
   }
 
   getItem(product) {
-    console.log("PADRE", product);
     this.status$ = true;
     if (this.recipes$.indexOf(product) === -1) {
       this.recipes$.push(product);
     }
     this.recipesService.productsRecipes = this.recipes$;
+  }
 
-    console.log(this.recipes$);
+  deleteItem(product) {
+    this.status$ = false;
+    if (this.recipes$.indexOf(product) === -1) {
+      this.recipes$.push(product);
+    }
+    this.recipesService.productsRecipes = this.recipes$;
   }
 }

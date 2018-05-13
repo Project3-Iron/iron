@@ -1,7 +1,11 @@
 <h1>Products</h1>
 <div *ngFor="let e of products$">
     <app-Product-card [products]="e" (outGetItem)="getItem($event)"></app-Product-card>
-    <a [routerLink]="['/recipes']">enlace</a>
 </div>
 
-
+<div *ngIf="recipes$.length === 0">
+        <button disabled="true" class="btn btn-success">Show Recipes</button>
+</div>
+<div *ngIf="recipes$.length != 0" >
+    <a [routerLink]="['/recipes']" class="btn btn-success">Show Recipes</a>
+</div>
