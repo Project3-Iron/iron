@@ -1,5 +1,4 @@
 <h1>Products</h1>
-
 <div *ngFor="let e of products$">
     <app-Product-card [products]="e" (outGetItem)="getItem($event)"></app-Product-card>
     <a [routerLink]="['/recipes']">enlace</a>
