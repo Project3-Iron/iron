@@ -1,26 +1,4 @@
 <div *ngIf="error">
-<<<<<<< HEAD
-    <p class="error active">{{error}}</p>
-</div>
-<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
-    <div class="card">
-        <div class="card-block">
-            <h3 class="card-title">{{products.name}}</h3>
-            <p class="card-text">
-                Brand: {{products.brand}}
-                <br> Category: {{products.category}}
-                <br> Ingredients: {{products.ingredients}}
-                <br> Price: {{products.price}} €
-                <br> Code: {{products.code}}
-            </p>
-        </div>
-        <div class="card-footer">
-            <button class="btn btn-info-outline" (click)="buyProduct(products.name,products.brand)">Comprar</button>
-            <button disabled="{{status}}" (click)="outInfo(products.name)" class="btn btn-info-outline">Add</button>
-        </div>
-    </div>
-</div>
-=======
   <p class="error active">{{error}}</p>
 </div>
 <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
@@ -36,10 +14,10 @@
       </p>
     </div>
     <div class="card-footer">
-      <a href="..." class="btn btn-info-outline">Show more...</a>
+      <button class="btn btn-info-outline" (click)="buyProduct(products.name,products.brand)">Comprar</button>
       <button *ngIf="!status" (click)="outInfo(products.name)" class="btn btn-info-outline">Add</button>
       <button *ngIf="status" (click)="outDelete(products.name)" class="btn btn-warning-outline">Discard</button>
     </div>
   </div>
 </div>
->>>>>>> 1aae514a2fe58cb57c0c4284de574acc8a2e151d
+
