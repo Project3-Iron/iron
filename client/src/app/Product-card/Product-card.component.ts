@@ -10,6 +10,7 @@ export class ProductCardComponent implements OnInit {
   @Input() products;
   @Input() status;
   @Output() outGetItem: EventEmitter<any> = new EventEmitter();
+  @Output() outGetDelete: EventEmitter<any> = new EventEmitter();
 
   query: String = "";
   constructor(private windowService: WindowService) {}
@@ -23,10 +24,15 @@ export class ProductCardComponent implements OnInit {
     this.outGetItem.emit(product);
   }
 
-  buyProduct(productName,productBrand) {
+  outDelete(product) {
+    this.status = false;
+    this.outGetDelete.emit(product);
+  }
+
+  buyProduct(productName, productBrand) {
     this.query = `//www.amazon.es/s/ref=nb_sb_noss_2?__mk_es_ES=%C3%85M%C3%85%C5%BD%C3%95%C3%91&url=search-alias%3Dgrocery`;
 
-   let keyWords = `&field-keywords=${productName}+${productBrand}`
+    let keyWords = `&field-keywords=${productName}+${productBrand}`;
 
     this.windowService.nativeWindow.open(`${this.query}${keyWords}`);
     // $scope.buyProduct = function() {

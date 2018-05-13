@@ -31,13 +31,17 @@ export class ProductComponent implements OnInit {
   }
 
   getItem(product) {
-    console.log("PADRE", product);
     this.status$ = true;
+    console.log(this.recipes$)
     if (this.recipes$.indexOf(product) === -1) {
       this.recipes$.push(product);
     }
     this.recipesService.productsRecipes = this.recipes$;
+  }
 
-    console.log(this.recipes$);
+  deleteItem(product) {
+    console.log(this.recipes$)
+    this.status$ = false;
+    this.recipes$.splice(this.recipes$.indexOf((product) - 1, 1));
   }
 }
