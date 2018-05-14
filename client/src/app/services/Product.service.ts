@@ -1,27 +1,25 @@
-import { Injectable, EventEmitter } from '@angular/core';
-import { Http } from '@angular/http';
-import { Observable } from 'rxjs/Rx';
-import 'rxjs';
+import { Injectable, EventEmitter } from "@angular/core";
+import { Http } from "@angular/http";
+import { Observable } from "rxjs/Rx";
+import "rxjs";
 
 @Injectable()
 export class ProductService {
-
-  BASE_URL = 'http://localhost:3000';
-
-  constructor(private http: Http) { }
+  BASE_URL = "http://localhost:3000";
+  options: any = { withCredentials: true };
+  constructor(private http: Http) {}
 
   handleError(e) {
     return Observable.throw(e.json().message);
   }
 
   getAllProducts() {
-    return this.http.get(`${this.BASE_URL}/api/product`)
+    return this.http
+      .get(`${this.BASE_URL}/api/product/myProducts`, this.options)
       .map(res => res.json())
       .catch(this.handleError);
   }
-
 }
-
 
 /* 
 

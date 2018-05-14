@@ -7,21 +7,13 @@ import { resolve } from "q";
 @Injectable()
 export class DeviceService {
   BASE_URL = "http://localhost:3000";
-  // deviceEvent: EventEmitter<any> = new EventEmitter();
   options: any = { withCredentials: true };
-  // device: any;
 
   constructor(private http: Http) {}
 
   handleError(e) {
     return Observable.throw(e.json().message);
   }
-
-  // handleDevice(device?: object) {
-  //   this.device = device;
-  //   this.deviceEvent.emit(this.device);
-  //   return this.device;
-  // }
 
   getDevicesUser() {
     return this.http

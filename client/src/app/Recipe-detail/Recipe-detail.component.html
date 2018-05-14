@@ -1,5 +1,5 @@
-
-<h1>{{recipe.recipe.label}}</h1> 
+<h1>
+  {{recipe.recipe.label}}</h1>
 <span *ngFor="let dietLabel of recipe.recipe.dietLabels" class="label label-success">{{dietLabel}}</span>
 
 <span *ngFor="let healthLabel of recipe.recipe.healthLabels" class="label">{{healthLabel}}</span>
@@ -8,14 +8,12 @@
 <br>
 <img [src]="recipe.recipe.image" width=300>
 
-<br>
-Ingredients: 
+<br> Ingredients:
 <ul *ngFor="let ingredient of recipe.recipe.ingredientLines">
   <li>{{ingredient}}</li>
 </ul>
 
-<br>
-Nutricional Info:
+<br> Nutricional Info:
 <ul *ngFor="let nutrient of recipe.recipe.digest">
-    <li>{{nutrient.label}}: {{nutrient.total | number}}{{nutrient.unit}}</li>
-  </ul>
+  <li>{{nutrient.label}}: {{nutrient.total | number}}{{nutrient.unit}}</li>
+</ul>

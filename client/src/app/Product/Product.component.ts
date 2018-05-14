@@ -17,7 +17,7 @@ export class ProductComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    public sessionService: SessionService,
+    //public sessionService: SessionService,
     public recipesService: RecipesService
   ) {}
 

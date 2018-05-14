@@ -15,20 +15,16 @@ export class RecipesComponent implements OnInit {
   recipes: Array<Object> = [];
   constructor(
     private productService: ProductService,
-    public sessionService: SessionService,
+    //public sessionService: SessionService,
     private recipesService: RecipesService, 
     public router: Router
   ) {}
 
   ngOnInit() {
     this.recipesService.getRecipes().subscribe(data => {
-   
       this.recipes = data.hits;
       console.log(data.hits)
-      
     });
-
-    
   }
   recipeDetail(recipe){
     console.log(recipe)

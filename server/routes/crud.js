@@ -1,12 +1,14 @@
 const express = require("express");
 const _ = require("lodash");
+const router = express.Router();
 
 const simpleCrud = Model => {
-  const router = express.Router();
   const fields = Object.keys(_.omit(Model.schema.paths, ["__v", "_id"]));
 
+  console.log(fields)
   // Retrive ALL
   router.get("/", (req, res, next) => {
+    //console.log(res.locals.user._id)
     Model.find()
       .then(objects => res.json(objects))
       .catch(e => next(e));
@@ -15,7 +17,7 @@ const simpleCrud = Model => {
   // Create
   router.post("/", (req, res, next) => {
     const obj = _.pick(req.body, fields);
-    
+    console.log(obj)
     Model.create(obj)
       .then(object => res.json(object))
       .catch(e => next(e));
@@ -36,7 +38,7 @@ const simpleCrud = Model => {
       .catch(e => next(e));
   });
 
-  // Delete 
+  // Delete
   router.delete("/:id", (req, res, next) => {
     Model.findByIdAndRemove(req.params.id)
       .then(() => res.json({ message: `SUCESSFUL DELETE ${req.params.id}` }))
