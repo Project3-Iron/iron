@@ -19,9 +19,9 @@
     <app-InitialWelcome></app-InitialWelcome>
   </div>
 
-  <div *ngIf="devices.length != 0">
-    <h2>Tus dispositivos</h2>
-    <a class="btn" [routerLink]="['/device/config']"> AÑADIR</a>
+  <div *ngIf="devices.length != 0">    
+    <h2>My Device</h2>
+    <a class="btn btn-block btn-recipes btn-add" [routerLink]="['/device/config']"> ADD</a>
 
     <!-- <a [routerLink]="['/device/myDevices']">Ver mis dispositivos</a> -->
 
@@ -48,6 +48,6 @@
     </div>
   </div>
 
-
-  <button (click)="sessionService.logout().subscribe()">Log Out</button>
+  <button class="btn-recipes btn btn-warning btn-block" (click)="sessionService.logout().subscribe()">Log Out</button>
+  
 </div>

@@ -3,6 +3,18 @@ img{
   margin: 0 auto
 }
 
-h4,p{
+h2,h4,p{
   text-align: center;
 }
+
+.btn-recipes{
+  margin-top: 10px;
+  padding-right: .5rem;
+  padding-left: .5rem;
+}
+
+.btn-add{
+  width: 94%;
+  margin: 15px auto;
+}
+
