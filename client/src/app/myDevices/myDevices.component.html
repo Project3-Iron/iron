@@ -1,9 +1,0 @@
-<h1>Mis dispositivos</h1>
-<ul>
-  <li *ngFor="let device of devices">
-      DeviceID: {{device.deviceId}}. Environment: {{device.environment}}
-      <button (click)="deleteDevice(device._id)">Delete</button>
-  </li>
-</ul>
-
-<a [routerLink]="['/device/config']"> Enlazar otro dispositivo</a>

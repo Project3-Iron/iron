@@ -86,20 +86,28 @@ app.use("/", index);
 const authRouter = require("./routes/auth");
 app.use("/api/auth", authRouter);
 
+const extendedProducts = require("./routes/extendedProduct");
+app.use("/api/product/myProducts", extendedProducts);
+
 const Product = require("./models/Product");
 const prodRouter = require("./routes/crud")(Product);
+app.use("/api/product", prodRouter);
 
-const extended = require("./routes/extendedDevices");
-app.use("/api/device/mydevices", extended);
+const extendedDevices = require("./routes/extendedDevices");
+app.use("/api/device/mydevices", extendedDevices);
+
 
 const deviceRouter = require("./routes/crud")(Device);
 app.use("/api/device", ensureLoggedIn(), deviceRouter);
 
-//,ensureLoggedIn()
-app.use("/api/product", prodRouter);
+const extendedProduct = require("./routes/extendedProduct")
+app.use("/api/product/myProducts", extendedProduct)
 
+//,ensureLoggedIn()
 app.use(function(req, res) {
   res.sendfile(__dirname + "/public/index.html");
 });
 
 module.exports = app;
+
+

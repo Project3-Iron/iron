@@ -19,13 +19,13 @@ export class ProductComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    public sessionService: SessionService,
+    //public sessionService: SessionService,
     public recipesService: RecipesService
   ) {}
 
   ngOnInit() {
     this.productService
-      .getAllProducts()
+      .getAllProducts(this.productService.deviceId)
       .subscribe(
         products => {
           this.products$ = products;
