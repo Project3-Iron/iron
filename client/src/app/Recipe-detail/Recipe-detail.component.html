@@ -1,23 +1,33 @@
-<h1>
-  {{recipe.recipe.label}}</h1>
-<span *ngFor="let dietLabel of recipe.recipe.dietLabels" class="label label-success">{{dietLabel}}</span>
-
-<span *ngFor="let healthLabel of recipe.recipe.healthLabels" class="label">{{healthLabel}}</span>
-
-
-<br>
-<img [src]="recipe.recipe.image" width=300>
-
-<br> Ingredients:
-<ul *ngFor="let ingredient of recipe.recipe.ingredientLines">
-  <li>{{ingredient}}</li>
-</ul>
-<button (click)="viewSource(recipe.recipe.url)">View Preparation</button>
-
-<br> Nutricional Info:
-<li>Calories: {{recipe.recipe.calories/recipe.recipe.yield | number}} 
-  per serving ({{recipe.recipe.yield}})</li>
-<ul *ngFor="let nutrient of recipe.recipe.digest| slice:0:6">
-
-  <li>{{nutrient.label}}: {{nutrient.total | number}}{{nutrient.unit}}</li>
-</ul>
+<h1>{{recipe.recipe.label}}</h1>
+<div class="col-xs-12 col-sm-4">
+  <div class="card">
+      <div class="card-block">
+        <div class="card-img">
+          <img src="{{recipe.recipe.image}}">
+        </div>
+        <div class="card-block">
+            <span *ngFor="let dietLabel of recipe.recipe.dietLabels" class="label label-success">{{dietLabel}}</span>
+            </div>
+            <div class="card-block">
+            <span *ngFor="let healthLabel of recipe.recipe.healthLabels" class="label">{{healthLabel}}</span>
+            </div>
+      <div class="card-block">
+          <h5>Ingredients:</h5>
+        <ul *ngFor="let ingredient of recipe.recipe.ingredientLines">
+          <li>{{ingredient}}</li>
+        </ul>
+      </div>
+      <div class="card-block">
+        <h5>Nutricional Info:</h5>
+      <ul> 
+        <li>Calories: {{recipe.recipe.calories/recipe.recipe.yield | number}} per serving ({{recipe.recipe.yield}})</li>
+      </ul>
+      <ul *ngFor="let nutrient of recipe.recipe.digest| slice:0:6">
+          <li>{{nutrient.label}}: {{nutrient.total | number}}{{nutrient.unit}}</li>
+        </ul>
+      </div>
+    <div class="card-footer">
+      <button class="btn btn-info btn-block" (click)="viewSource(recipe.recipe.url)">View Preparation</button>
+    </div>
+  </div>
+</div>
