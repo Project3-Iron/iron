@@ -4,3 +4,8 @@ h1{
 .alert-text{
   text-align: center;
 }
+.btn-recipes{
+  margin-top: 10px;
+  padding-right: .5rem;
+  padding-left: .5rem;
+}
