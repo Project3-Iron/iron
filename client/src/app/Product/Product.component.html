@@ -1,4 +1,11 @@
 <h1>Products</h1>
+<clr-alert>
+        <div class="alert-item">
+            <span class="alert-text">
+                Total Amount: {{price}} €
+            </span>
+        </div>
+</clr-alert>
 <div *ngFor="let e of products$">
     <app-Product-card [products]="e" (outGetItem)="getItem($event)" (outGetDelete)="deleteItem($event)"></app-Product-card>
 </div>
