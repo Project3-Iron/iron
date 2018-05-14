@@ -8,6 +8,7 @@ const simpleCrud = Model => {
   console.log(fields)
   // Retrive ALL
   router.get("/", (req, res, next) => {
+    console.log(Model)
     //console.log(res.locals.user._id)
     Model.find()
       .then(objects => res.json(objects))
@@ -16,6 +17,7 @@ const simpleCrud = Model => {
 
   // Create
   router.post("/", (req, res, next) => {
+    console.log(Model)
     const obj = _.pick(req.body, fields);
     console.log(obj)
     Model.create(obj)
@@ -40,8 +42,13 @@ const simpleCrud = Model => {
 
   // Delete
   router.delete("/:id", (req, res, next) => {
+    console.log(Model)
     Model.findByIdAndRemove(req.params.id)
-      .then(() => res.json({ message: `SUCESSFUL DELETE ${req.params.id}` }))
+      .then((err,a) =>{
+        console.log(err,a)
+        return res.json({ message: `SUCESSFUL DELETE ${req.params.id}` })
+      })
+      
       .catch(e => next(e));
   });
   return router;

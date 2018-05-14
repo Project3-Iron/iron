@@ -10,8 +10,17 @@ const path = require("path");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const cors = require("cors");
-const Device = require("./models/Device");
 const ensureLoggedIn = require("./middlewares/ensureLoggedIn.js");
+
+const Device = require("./models/Device");
+const Product = require("./models/Product");
+
+
+const deviceRouter = require("./routes/crud")(Device);
+const prodRouter = require("./routes/crud")(Product);
+const extendedDevices = require("./routes/extendedDevices");
+const extendedProducts = require("./routes/extendedProduct");
+
 
 const axios = require("axios");
 mongoose.Promise = Promise;
@@ -65,13 +74,6 @@ app.use((req, res, next) => {
 });
 
 // Express View engine setup
-app.use(
-  require("node-sass-middleware")({
-    src: path.join(__dirname, "public"),
-    dest: path.join(__dirname, "public"),
-    sourceMap: true
-  })
-);
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
@@ -86,22 +88,17 @@ app.use("/", index);
 const authRouter = require("./routes/auth");
 app.use("/api/auth", authRouter);
 
-const extendedProducts = require("./routes/extendedProduct");
+
+app.use("/api/device/mydevices", extendedDevices);
+app.use("/api/device", ensureLoggedIn(), deviceRouter);
 app.use("/api/product/myProducts", extendedProducts);
 
-const Product = require("./models/Product");
-const prodRouter = require("./routes/crud")(Product);
 app.use("/api/product", prodRouter);
 
-const extendedDevices = require("./routes/extendedDevices");
-app.use("/api/device/mydevices", extendedDevices);
 
-
-const deviceRouter = require("./routes/crud")(Device);
-app.use("/api/device", ensureLoggedIn(), deviceRouter);
-
-const extendedProduct = require("./routes/extendedProduct")
-app.use("/api/product/myProducts", extendedProduct)
+//extended product
+// const extendedProduct = require("./routes/extendedProduct")
+// app.use("/api/product/myProducts", extendedProduct)
 
 //,ensureLoggedIn()
 app.use(function(req, res) {
@@ -109,5 +106,3 @@ app.use(function(req, res) {
 });
 
 module.exports = app;
-
-

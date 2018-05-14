@@ -1,40 +1,53 @@
-<div class="login-wrapper">
-  <form class="login">
-    <label class="title">
-      <h3 class="welcome">Welcome to Iron</h3>
-    </label>
+<div *ngIf="!sessionService.user">
+  <div class="login-wrapper">
+    <form class="login">
+      <label class="title">
+        <h3 class="welcome">Welcome to Iron</h3>
+      </label>
 
-
-    <div *ngIf="!sessionService.user">
       <div class="login-group">
         <a [routerLink]="['/login']" class="btn btn-primary">Login</a>
         <a [routerLink]="['/signup']" class="btn btn-primary">Sign Up</a>
       </div>
-    </div>
-    <div *ngIf="sessionService.user">
-      <div *ngIf="devices.length === 0">
-        <app-InitialWelcome></app-InitialWelcome>
+
+    </form>
+  </div>
+</div>
+
+<div *ngIf="sessionService.user">
+  <div *ngIf="devices.length === 0">
+    <app-InitialWelcome></app-InitialWelcome>
+  </div>
+
+  <div *ngIf="devices.length != 0">
+    <h2>Tus dispositivos</h2>
+    <a class="btn" [routerLink]="['/device/config']"> AÑADIR</a>
+
+    <!-- <a [routerLink]="['/device/myDevices']">Ver mis dispositivos</a> -->
+
+    <div *ngFor="let device of devices, let odd=odd, let even=even">
+      <div class="col-xs-12 col-sm-4">
+        <div class="card">
+          <div class="card-block">
+            <h4 class="card-title">Entorno: {{device.environment}}</h4>
+            <div *ngIf="odd" class="card-img">
+              <img src="http://res.cloudinary.com/dzpmxapkq/image/upload/v1526311202/fridge.svg" (click)="viewProducts(device._id)">
+            </div>
+            <div *ngIf="even" class="card-img">
+              <img src="http://res.cloudinary.com/dzpmxapkq/image/upload/v1526311431/shelves.svg" (click)="viewProducts(device._id)">
+            </div>
+
+            <p class="card-text">  Id del dispositivo: {{device.deviceId}}</p>
+          </div>
+          <div class="card-footer">
+            <button (click)="deleteDevice(device._id)" class="btn btn-outline-warning btn-sm">X</button>
+
+          </div>
+        </div>
       </div>
-
-      <div *ngIf="devices.length != 0">
-        <!-- <a [routerLink]="['/device/myDevices']">Ver mis dispositivos</a> -->
-        <h2>Selecciona un dispositivo</h2>
-        <ul>
-          <li *ngFor="let device of devices">
-            DeviceID: {{device.deviceId}}. Environment: {{device.environment}}
-            <button (click)="deleteDevice(device._id)">Delete</button>
-            <button (click)="viewProducts(device._id)">View Products</button>
-          </li>
-          <br>
-        </ul>
-
-      
-
-        <a [routerLink]="['/device/config']"> Enlazar otro dispositivo</a>
-
-      </div>
-
-      <button (click)="sessionService.logout().subscribe()">Log Out</button>
     </div>
-  </form>
+  </div>
+
+
+  <button (click)="sessionService.logout().subscribe()">Log Out</button>
 </div>
