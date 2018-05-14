@@ -1,5 +1,21 @@
 <div *ngFor="let recipe of recipes">
 
-  {{recipe.recipe.label}}
-  <button (click)="recipeDetail(recipe)">View more</button>
+  
+  <div class="col-xs-12 col-sm-4">
+      <div class="card">
+          <div class="card-block">
+              <div class="progress top">
+                  <progress value="30" max="100"></progress>
+              </div>
+              <div class="card-img">
+                  <img src="{{recipe.recipe.image}}">
+              </div>
+              <h4 class="card-title">{{recipe.recipe.label}}</h4>
+              <p class="card-text">Yield: {{recipe.recipe.yield}}</p>
+          </div>
+          <div class="card-footer">
+              <button class="btn btn-info-outline btn-sm" (click)="recipeDetail(recipe)">View more</button>
+          </div>
+      </div>
+  </div>
 </div>
