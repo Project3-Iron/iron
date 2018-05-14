@@ -131,6 +131,8 @@ const remainingDates = date => {
   return days;
 };
 
+const HistoricalData = require("./models/HistoricalData")
+
 const findAndCreate = rfid => {
   //console.log(idDeviceUser)
   ProductDB.findOne({
@@ -164,6 +166,8 @@ const findAndCreate = rfid => {
             device: idDeviceUser,
             remainingDays: remainingDates(dueDate)
           });
+
+          let histInfo = new 
           newProduct.save(err => {
             if (err) console.log(err);
             else console.log(`Producto creado`);
