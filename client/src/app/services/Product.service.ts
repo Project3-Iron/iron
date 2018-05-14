@@ -8,6 +8,7 @@ export class ProductService {
 
   BASE_URL = 'http://localhost:3000';
   options: any = { withCredentials: true };
+  deviceId: String = "";
 
   constructor(private http: Http) { }
 
@@ -15,8 +16,9 @@ export class ProductService {
     return Observable.throw(e.json().message);
   }
 
-  getAllProducts() {
-    return this.http.get(`${this.BASE_URL}/api/product`, this.options)
+  getAllProducts(deviceId) {
+
+    return this.http.get(`${this.BASE_URL}/api/product/myProducts/${deviceId}`, this.options)
       .map(res => res.json())
       .catch(this.handleError);
   }

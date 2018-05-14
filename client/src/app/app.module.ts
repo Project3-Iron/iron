@@ -18,7 +18,6 @@ import { ProductCardComponent } from "./Product-card/Product-card.component";
 import { InitialWelcomeComponent } from "./OnBoarding/InitialWelcome/InitialWelcome.component";
 import { DeviceService } from "./services/Device.service";
 import { LinkDeviceComponent } from "./OnBoarding/LinkDevice/LinkDevice.component";
-import { MyDevicesComponent } from "./myDevices/myDevices.component";
 import { WindowService } from "./services/Window.service";
 import { RecipeDetailComponent } from './Recipe-detail/Recipe-detail.component';
 
@@ -31,7 +30,6 @@ import { RecipeDetailComponent } from './Recipe-detail/Recipe-detail.component';
     AuthLoginComponent,
     InitialWelcomeComponent,
     LinkDeviceComponent,
-    MyDevicesComponent,
     InitialWelcomeComponent,
     LinkDeviceComponent,
     ProductCardComponent,
