@@ -17,5 +17,5 @@ const historicalSchema = new Schema(
   }
 );
 
-const Historical = mongoose.model("Historical", historicalSchema);
-module.exports = historicalSchema;
+const HistoricalData = mongoose.model("Historical", historicalSchema);
+module.exports = HistoricalData;
