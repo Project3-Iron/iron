@@ -17,7 +17,7 @@
       <button class="btn btn-info-outline" (click)="buyProduct(products.name,products.brand)">Comprar</button>
       <button *ngIf="!status" (click)="outInfo(products.name)" class="btn btn-info-outline">Add</button>
       <button *ngIf="status" (click)="outDelete(products.name)" class="btn btn-warning-outline">Discard</button>
-      <p *ngIf="products.remainingDays.includes('un')" class="btn btn-warning-outline">Caduca en: {{products.remainingDays}} </p>
+      <p *ngIf="products.remainingDays.includes('un')" class="btn btn-warning-outline">Caduca en: {{products.remainingDays}} <img class="img-alert" src="https://www.freeiconspng.com/uploads/alert-icon-red-11.png" alt=""> </p>
     </div>
   </div>
 </div>
