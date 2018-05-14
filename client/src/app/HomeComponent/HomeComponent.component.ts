@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   constructor(
     public sessionService: SessionService,
     public router: Router,
-    public deviceService: DeviceService, 
+    public deviceService: DeviceService,
     public productService: ProductService
   ) {}
 
@@ -25,17 +25,17 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  viewProducts(deviceId){
-      this.productService.deviceId = deviceId; 
-      this.router.navigate(['/products'])
+  viewProducts(deviceId) {
+    this.productService.deviceId = deviceId;
+    this.router.navigate(["/products"]);
   }
   deleteDevice(id) {
     this.deviceService.deleteDevice(id).subscribe(() => {
-     this.getDevicesUser()
+      this.getDevicesUser();
     });
   }
 
-  getDevicesUser(){
+  getDevicesUser() {
     this.deviceService.getDevicesUser().subscribe(devices => {
       return (this.devices = devices);
     });

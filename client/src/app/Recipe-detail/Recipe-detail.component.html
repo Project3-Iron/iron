@@ -1,21 +1,23 @@
-
-<h1>{{recipe.recipe.label}}</h1> 
+<h1>
+  {{recipe.recipe.label}}</h1>
 <span *ngFor="let dietLabel of recipe.recipe.dietLabels" class="label label-success">{{dietLabel}}</span>
 
 <span *ngFor="let healthLabel of recipe.recipe.healthLabels" class="label">{{healthLabel}}</span>
 
-<p>Calories: {{recipe.recipe.calories | number}}</p>
+
 <br>
 <img [src]="recipe.recipe.image" width=300>
 
-<br>
-Ingredients: 
+<br> Ingredients:
 <ul *ngFor="let ingredient of recipe.recipe.ingredientLines">
   <li>{{ingredient}}</li>
 </ul>
+<button (click)="viewSource(recipe.recipe.url)">View Preparation</button>
 
-<br>
-Nutricional Info:
-<ul *ngFor="let nutrient of recipe.recipe.digest">
-    <li>{{nutrient.label}}: {{nutrient.total | number}}{{nutrient.unit}}</li>
-  </ul>
+<br> Nutricional Info:
+<li>Calories: {{recipe.recipe.calories/recipe.recipe.yield | number}} 
+  per serving ({{recipe.recipe.yield}})</li>
+<ul *ngFor="let nutrient of recipe.recipe.digest| slice:0:6">
+
+  <li>{{nutrient.label}}: {{nutrient.total | number}}{{nutrient.unit}}</li>
+</ul>
