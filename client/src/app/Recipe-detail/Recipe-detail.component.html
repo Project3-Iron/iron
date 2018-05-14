@@ -15,13 +15,9 @@
 <button (click)="viewSource(recipe.recipe.url)">View Preparation</button>
 
 <br> Nutricional Info:
-<<<<<<< HEAD
-<ul *ngFor="let nutrient of recipe.recipe.digest">
-=======
 <li>Calories: {{recipe.recipe.calories/recipe.recipe.yield | number}} 
   per serving ({{recipe.recipe.yield}})</li>
 <ul *ngFor="let nutrient of recipe.recipe.digest| slice:0:6">
 
->>>>>>> 145d641ac37f95ed317f0e1cf3bf2acd4b085ad8
   <li>{{nutrient.label}}: {{nutrient.total | number}}{{nutrient.unit}}</li>
 </ul>
