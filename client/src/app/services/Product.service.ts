@@ -7,6 +7,7 @@ import 'rxjs';
 export class ProductService {
 
   BASE_URL = 'http://localhost:3000';
+  options: any = { withCredentials: true };
 
   constructor(private http: Http) { }
 
@@ -15,7 +16,7 @@ export class ProductService {
   }
 
   getAllProducts() {
-    return this.http.get(`${this.BASE_URL}/api/product`)
+    return this.http.get(`${this.BASE_URL}/api/product`, this.options)
       .map(res => res.json())
       .catch(this.handleError);
   }

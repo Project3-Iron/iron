@@ -28,7 +28,6 @@ export class RecipesComponent implements OnInit {
       
     });
 
-    
   }
   recipeDetail(recipe){
     console.log(recipe)
