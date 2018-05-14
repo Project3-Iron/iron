@@ -7,15 +7,27 @@ import "rxjs";
 export class ProductService {
   BASE_URL = "http://localhost:3000";
   options: any = { withCredentials: true };
+<<<<<<< HEAD
   constructor(private http: Http) {}
+=======
+  deviceId: String = "";
+
+  constructor(private http: Http) { }
+>>>>>>> 145d641ac37f95ed317f0e1cf3bf2acd4b085ad8
 
   handleError(e) {
     return Observable.throw(e.json().message);
   }
 
+<<<<<<< HEAD
   getAllProducts() {
     return this.http
       .get(`${this.BASE_URL}/api/product/myProducts`, this.options)
+=======
+  getAllProducts(deviceId) {
+
+    return this.http.get(`${this.BASE_URL}/api/product/myProducts/${deviceId}`, this.options)
+>>>>>>> 145d641ac37f95ed317f0e1cf3bf2acd4b085ad8
       .map(res => res.json())
       .catch(this.handleError);
   }

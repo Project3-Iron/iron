@@ -1,26 +1,40 @@
 <div class="login-wrapper">
-    <form class="login">
-      <label class="title">
-        <h3 class="welcome">Welcome to Iron</h3>
-      </label>
+  <form class="login">
+    <label class="title">
+      <h3 class="welcome">Welcome to Iron</h3>
+    </label>
 
 
-      <div *ngIf="!sessionService.user">
-      <div class="login-group">  
+    <div *ngIf="!sessionService.user">
+      <div class="login-group">
         <a [routerLink]="['/login']" class="btn btn-primary">Login</a>
         <a [routerLink]="['/signup']" class="btn btn-primary">Sign Up</a>
       </div>
     </div>
     <div *ngIf="sessionService.user">
-        <div *ngIf="devices.length === 0">
-            <app-InitialWelcome></app-InitialWelcome>
-        </div>
+      <div *ngIf="devices.length === 0">
+        <app-InitialWelcome></app-InitialWelcome>
+      </div>
 
-        <div *ngIf="devices.length != 0">
-          <a [routerLink]="['/device/myDevices']">Ver mis dispositivos</a>
+      <div *ngIf="devices.length != 0">
+        <!-- <a [routerLink]="['/device/myDevices']">Ver mis dispositivos</a> -->
+        <h2>Selecciona un dispositivo</h2>
+        <ul>
+          <li *ngFor="let device of devices">
+            DeviceID: {{device.deviceId}}. Environment: {{device.environment}}
+            <button (click)="deleteDevice(device._id)">Delete</button>
+            <button (click)="viewProducts(device._id)">View Products</button>
+          </li>
+          <br>
+        </ul>
+
+      
+
+        <a [routerLink]="['/device/config']"> Enlazar otro dispositivo</a>
+
       </div>
 
       <button (click)="sessionService.logout().subscribe()">Log Out</button>
     </div>
-    </form>
-  </div>
+  </form>
+</div>

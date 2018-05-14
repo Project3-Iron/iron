@@ -23,7 +23,7 @@ export class ProductComponent implements OnInit {
 
   ngOnInit() {
     this.productService
-      .getAllProducts()
+      .getAllProducts(this.productService.deviceId)
       .subscribe(
         products => (this.products$ = products),
         err => (this.error = err)

@@ -96,8 +96,12 @@ app.use("/api/product", prodRouter);
 const extendedDevices = require("./routes/extendedDevices");
 app.use("/api/device/mydevices", extendedDevices);
 
+
 const deviceRouter = require("./routes/crud")(Device);
 app.use("/api/device", ensureLoggedIn(), deviceRouter);
+
+const extendedProduct = require("./routes/extendedProduct")
+app.use("/api/product/myProducts", extendedProduct)
 
 //,ensureLoggedIn()
 app.use(function(req, res) {
@@ -105,3 +109,5 @@ app.use(function(req, res) {
 });
 
 module.exports = app;
+
+
