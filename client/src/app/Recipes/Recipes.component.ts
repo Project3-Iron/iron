@@ -25,6 +25,7 @@ export class RecipesComponent implements OnInit {
       this.recipes = data.hits;
       console.log(data.hits)
     });
+
   }
   recipeDetail(recipe){
     console.log(recipe)
