@@ -19,8 +19,11 @@ import { InitialWelcomeComponent } from "./OnBoarding/InitialWelcome/InitialWelc
 import { DeviceService } from "./services/Device.service";
 import { LinkDeviceComponent } from "./OnBoarding/LinkDevice/LinkDevice.component";
 import { WindowService } from "./services/Window.service";
-import { RecipeDetailComponent } from './Recipe-detail/Recipe-detail.component';
-import { NavComponent } from './Nav/Nav.component';
+import { RecipeDetailComponent } from "./Recipe-detail/Recipe-detail.component";
+import { NavComponent } from "./Nav/Nav.component";
+import { DataChartComponent } from "./Data-Chart/Data-Chart.component";
+import { ChartsModule } from "ng2-charts";
+import { HistoricalService } from "./services/Historical.service";
 
 @NgModule({
   declarations: [
@@ -36,22 +39,25 @@ import { NavComponent } from './Nav/Nav.component';
     ProductCardComponent,
     RecipesComponent,
     RecipeDetailComponent,
-    NavComponent
-],
+    NavComponent,
+    DataChartComponent
+  ],
 
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot(routes),
-    ClarityModule
+    ClarityModule,
+    ChartsModule
   ],
   providers: [
     SessionService,
     DeviceService,
     ProductService,
     RecipesService,
-    WindowService
+    WindowService,
+    HistoricalService
   ],
   bootstrap: [AppComponent]
 })

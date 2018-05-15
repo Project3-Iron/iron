@@ -1,0 +1,14 @@
+<h1>Mis gastos</h1>
+<div *ngIf="showChart">
+  <div style="display: block">
+    <canvas #myChart baseChart
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [options]="barChartOptions"
+            [legend]="barChartLegend"
+            [chartType]="barChartType"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"></canvas>
+  </div>
+  <button (click)="changeChart()" class="btn btn-primary">Change Chart</button>
+</div>
