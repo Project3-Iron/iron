@@ -20,6 +20,10 @@ import { DeviceService } from "./services/Device.service";
 import { LinkDeviceComponent } from "./OnBoarding/LinkDevice/LinkDevice.component";
 import { WindowService } from "./services/Window.service";
 import { RecipeDetailComponent } from './Recipe-detail/Recipe-detail.component';
+import { DataChartComponent } from './Data-Chart/Data-Chart.component';
+import { ChartsModule } from 'ng2-charts';
+import { HistoricalService } from "./services/Historical.service";
+
 
 @NgModule({
   declarations: [
@@ -35,6 +39,7 @@ import { RecipeDetailComponent } from './Recipe-detail/Recipe-detail.component';
     ProductCardComponent,
     RecipesComponent,
     RecipeDetailComponent,
+    DataChartComponent
 ],
 
   imports: [
@@ -42,14 +47,16 @@ import { RecipeDetailComponent } from './Recipe-detail/Recipe-detail.component';
     FormsModule,
     HttpModule,
     RouterModule.forRoot(routes),
-    ClarityModule
+    ClarityModule, 
+    ChartsModule
   ],
   providers: [
     SessionService,
     DeviceService,
     ProductService,
     RecipesService,
-    WindowService
+    WindowService, 
+    HistoricalService
   ],
   bootstrap: [AppComponent]
 })
