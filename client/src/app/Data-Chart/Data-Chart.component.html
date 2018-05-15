@@ -1,4 +1,5 @@
-<h1>Mis gastos</h1>
+<app-Nav></app-Nav>
+<h1>My Expenses</h1>
 <div *ngIf="showChart">
   <div style="display: block">
     <canvas #myChart baseChart
@@ -8,9 +9,11 @@
             [legend]="barChartLegend"
             [chartType]="barChartType"
             (chartHover)="chartHovered($event)"
-            (chartClick)="chartClicked($event)"></canvas>
+            (chartClick)="chartClicked($event)">
+    </canvas>
   </div>
-  <button (click)="changeChart()" class="btn btn-primary">Change Chart</button>
-  <a class="btn" [routerLink]="['/historical/detail']"> Info per product</a>
-
+</div>
+<div class="button-container">
+<button (click)="changeChart()" class="btn btn-outline-primary btn-add">Change Chart</button>
+<button (click)="goHistorical()" class="btn btn-outline-primary btn-add">Info per product</button>
 </div>

@@ -24,7 +24,7 @@ h2,h4,h3,p{
 .trash-button{
   height: 38px;
 }
-.btn-add[_ngcontent-c1] {
+.btn-add {
   font-size: 17px;
   width: 94%;
   margin: 15px auto;

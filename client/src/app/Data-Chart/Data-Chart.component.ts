@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { HistoricalService } from "../services/Historical.service";
+import { Router } from "@angular/router";
 
 interface historicalData {
   user: String;
@@ -15,7 +16,7 @@ interface historicalData {
   styleUrls: ["./Data-Chart.component.css"]
 })
 export class DataChartComponent implements OnInit {
-  constructor(public historicalService: HistoricalService) {}
+  constructor(public historicalService: HistoricalService, public router: Router) {}
   historical: Array<historicalData>;
   showChart: boolean = false;
   ngOnInit() {
@@ -58,6 +59,10 @@ export class DataChartComponent implements OnInit {
     this.barChartData = [{ data: totalExpendedArr, label:"Gastado"}, { data: totalWastedArr, label:"Desperdiciado" }];
     return this.barChartData;
   }
+
+    goHistorical() {
+      this.router.navigate(['/historical/detail']);
+    }
 
   // events
   public chartClicked(e: any): void {

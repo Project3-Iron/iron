@@ -1,0 +1,15 @@
+h1{
+  text-align: center;
+  margin: 10%;
+}
+.btn-add {
+  font-size: 17px;
+  width: 100%;
+  margin: 10px auto;
+  height: 60px;
+}
+.button-container{
+  display: flex;
+  flex-direction: column;
+  margin-top: 6%;
+}

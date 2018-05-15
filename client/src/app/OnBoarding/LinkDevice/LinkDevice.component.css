@@ -1,3 +1,8 @@
+.btn {
+  width: 74% !important;
+  margin: 20px auto !important;
+  height: 55px !important;
+}
 .form-block{
   margin-top: 20px;
   text-align: center;
@@ -7,12 +12,6 @@ h1{
 }
 h5{
   margin-bottom: 6%;
-}
-
-.btn[_ngcontent-c1] {
-  width: 74% !important;
-  margin: 20px auto !important;
-  height: 55px !important;
 }
 .contenedor{
   margin-top: 55px;

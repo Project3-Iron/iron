@@ -1,20 +1,24 @@
-<h1>Mis gastos</h1>
+<app-Nav></app-Nav>
+<h1>My Expenses</h1>
 
-<select #select>
+<div *ngIf="showChart" style="display: block">
+        <canvas baseChart
+                [datasets]="radarChartData"
+                [labels]="radarChartLabels"
+                [chartType]="radarChartType"
+                (chartHover)="chartHovered($event)"
+                [options] = "chartOptions"
+                (chartClick)="chartClicked($event)"></canvas>
+</div>
+
+<div class="container">
+    <h4>Select your Device</h4>
+    <div class="select">
+<select #select id="selects_1">
     <option *ngFor="let device of devicesUser" [value]="device._id">
      {{device.deviceId}}
     </option>
   </select>
-
-  <button (click)="seeGraph(select.value)">See graph</button>
-
-
-  <div *ngIf="showChart" style="display: block">
-      <canvas baseChart
-              [datasets]="radarChartData"
-              [labels]="radarChartLabels"
-              [chartType]="radarChartType"
-              (chartHover)="chartHovered($event)"
-              [options] = "chartOptions"
-              (chartClick)="chartClicked($event)"></canvas>
-    </div>
+</div>
+  <button class="btn btn-outline-info btn-add" (click)="seeGraph(select.value)">See graph</button>
+</div>
