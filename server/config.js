@@ -5,13 +5,13 @@ const Product = require("./models/Product");
 const moment = require("moment");
 
 const remainingDates = date => {
-  moment.locale("es");
+ // moment.locale("es");
   let days = moment(date, "YYYYMMDD").fromNow();
 
-  if (days.includes("hora")) {
-    days = "hoy";
-  } else if (days.includes("hace")) {
-    days = "caducado";
+  if (days.includes("hour")) {
+    days = "today";
+  } else if (days.includes("ago")) {
+    days = "expired";
   }
   return days;
 }
