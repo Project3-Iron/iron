@@ -5,13 +5,13 @@ const Product = require("./models/Product");
 const moment = require("moment");
 
 const remainingDates = date => {
-  moment.locale("es");
+  //moment.locale("es");
   let days = moment(date, "YYYYMMDD").fromNow();
 
-  if (days.includes("hora")) {
-    days = "hoy";
-  } else if (days.includes("hace")) {
-    days = "caducado";
+  if (days.includes("hour")) {
+    days = "today";
+  } else if (days.includes("ago")) {
+    days = "expired";
   }
   return days;
 }
@@ -71,9 +71,17 @@ module.exports = {
       .then(e => {
         Product.findOne({ code: e.code }).then(item => {
           if (item) {
+
+
             item.status = !item.status;
+
+		if(item.status){
+		//status = true, hay que actualizar el insertDate
+		item.insertDate = Date.now()
+		}
+	
             item.save(() => {
-              console.log(`Status cambiado`);
+              console.log(`Status y insertDate cambiado`);
             });
           } else {
             //   let remainingDates = remainingDates(e.dueDate);
@@ -126,16 +134,16 @@ module.exports = {
 
   updateTotalWasted: (idDeviceUser, userOwner) => {
     let totalWasted = 0;
-    console.log(idDeviceUser);
-    Product.find({ remainingDays: "caducado", device: idDeviceUser })
+    console.log("total wasted");
+    Product.find({ remainingDays: "expired", device: idDeviceUser })
       .then(products => {
-        //console.log(products);
+        console.log(products);
         products.forEach(product => {
           totalWasted += product.price;
         });
       })
       .then(e => {
-        //updateHistoricalData("totalWasted", totalWasted);
+        updateHistoricalData("totalWasted", totalWasted);
       });
   }
 };
