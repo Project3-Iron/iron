@@ -8,13 +8,11 @@ h1{
 h5{
   margin-bottom: 6%;
 }
-.prueba{
-  margin-top: 20px;
-}
+
 .btn[_ngcontent-c1] {
-  width: 74%;
-  margin: 0 auto;
-  height: 55px;
+  width: 74% !important;
+  margin: 20px auto !important;
+  height: 55px !important;
 }
 .contenedor{
   margin-top: 55px;
@@ -31,4 +29,7 @@ input{
 .alert{
   width: 90%;
   margin: 0 auto;
+}
+span{
+  text-align: center;
 }

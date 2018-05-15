@@ -2,9 +2,9 @@
   <div class="login-wrapper">
     <form class="login">
       <label class="title">
-        <h3 class="welcome">Welcome to Iron</h3>
+        <h1 class="welcome">Welcome to Iron</h1>
       </label>
-
+      <img src="https://png.icons8.com/android/1600/snowflake.png" alt="logo-iron">
       <div class="login-group">
         <a [routerLink]="['/login']" class="btn btn-primary">Login</a>
         <a [routerLink]="['/signup']" class="btn btn-primary">Sign Up</a>
@@ -20,17 +20,12 @@
     <app-InitialWelcome></app-InitialWelcome>
   </div>
 
-<<<<<<< HEAD
   <div *ngIf="devices.length != 0">    
       <app-Nav></app-Nav>
     <h2>My Device</h2>
     <a class="btn btn-block btn-recipes btn-add" [routerLink]="['/device/config']"> ADD</a>
-=======
-  <div *ngIf="devices.length != 0">
-    <h2>Tus dispositivos</h2>
-    <a class="btn" [routerLink]="['/historical']"> Historical Data</a>
-    <a class="btn" [routerLink]="['/device/config']"> AÑADIR</a>
->>>>>>> e404495ceac7b897fbaf508fb8d1bc9efc0eeec5
+    <a class="btn btn-block btn-recipes btn-add" [routerLink]="['/historical']"> Historical Data</a>
+
 
     <!-- <a [routerLink]="['/device/myDevices']">Ver mis dispositivos</a> -->
 
@@ -38,7 +33,7 @@
       <div class="col-xs-12 col-sm-4">
         <div class="card">
           <div class="card-block">
-            <h4 class="card-title">Entorno: {{device.environment}}</h4>
+            <h4 class="card-title">Environment: {{device.environment}}</h4>
             <div *ngIf="odd" class="card-img">
               <img src="http://res.cloudinary.com/dzpmxapkq/image/upload/v1526311202/fridge.svg" (click)="viewProducts(device._id)">
             </div>
@@ -46,16 +41,18 @@
               <img src="http://res.cloudinary.com/dzpmxapkq/image/upload/v1526311431/shelves.svg" (click)="viewProducts(device._id)">
             </div>
 
-            <p class="card-text">  Id del dispositivo: {{device.deviceId}}</p>
+            <p class="card-text">  Device Id: {{device.deviceId}}</p>
           </div>
           <div class="card-footer">
-            <button (click)="deleteDevice(device._id)" class="btn btn-outline-warning btn-sm">X</button>
-
+            <button (click)="deleteDevice(device._id)" class="btn btn-outline-warning trash-button">
+              <img class="logo-trash" src="https://cdn2.iconfinder.com/data/icons/metro-uinvert-dock/128/Recycle_Bin_Full.png" alt="trash-logo">
+            </button>
           </div>
         </div>
       </div>
     </div>
   </div>
+<<<<<<< HEAD
 
 <<<<<<< HEAD
   <button class="btn-recipes btn btn-warning btn-block" (click)="sessionService.logout().subscribe()">Log Out</button>
@@ -66,4 +63,6 @@
 
  
 >>>>>>> e404495ceac7b897fbaf508fb8d1bc9efc0eeec5
+=======
+>>>>>>> 5fb254fa71f9c7f4a4cb9e4d9fe4c9356165972c
 </div>

@@ -1,6 +1,18 @@
-<h2>CONFIGURA TU NEVERA</h2>
-<p>No tienes ningún dispositivo enlazado...</p>
-<img src="http://res.cloudinary.com/dzpmxapkq/image/upload/v1525951304/project3/matchDevice.png"
-width="300" [routerLink]="['/device/config']">
-<br>
-<!-- <a [routerLink]="['/device/config']">Link a Device</a> -->
+<app-Nav></app-Nav>
+<h2>Configure your Device</h2>
+<div class="alert alert-danger">
+  <div class="alert-items">
+    <div class="alert-item static">
+      <div class="alert-icon-wrapper">
+        <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+      </div>
+      <span class="alert-text">
+        You haven´t any device linked...
+      </span>
+    </div>
+  </div>
+</div>
+<div class="container-img">
+  <img src="http://res.cloudinary.com/dzpmxapkq/image/upload/v1525951304/project3/matchDevice.png" [routerLink]="['/device/config']">
+</div>
+
