@@ -1,15 +1,67 @@
-module.exports = {
-  remainingDates: date => {
-    moment.locale("es");
-    let days = moment(date, "YYYYMMDD").fromNow();
+const Device = require("./models/Device");
+const ProductDB = require("./models/ProductDB");
+const HistoricalData = require("./models/HistoricalData");
+const Product = require("./models/Product");
+const moment = require("moment");
 
-    if (days.includes("hora")) {
-      days = "hoy";
-    } else if (days.includes("hace")) {
-      days = "caducado";
+const remainingDates = date => {
+  moment.locale("es");
+  let days = moment(date, "YYYYMMDD").fromNow();
+
+  if (days.includes("hora")) {
+    days = "hoy";
+  } else if (days.includes("hace")) {
+    days = "caducado";
+  }
+  return days;
+}
+const  checkField = (updateField, price) => {
+  console.log("entra a checkFields");
+  if (updateField === "totalWasted") {
+    return [price, 0];
+  } else if (updateField === "totalExpended") {
+    return [0, price];
+  }
+}
+
+
+const updateHistoricalData = (updateField, price) => {
+  let today = new Date();
+  let year = today.getFullYear();
+  let month = today.getMonth() + 1;
+
+  HistoricalData.findOne({ user: userOwner, year: year, month: month }).then(
+    data => {
+      console.log(userOwner);
+      if (data) {
+        console.log("hay que actualizarlo");
+        //tengo actualizarlo
+        data[updateField] += price;
+        data.save(err => {
+          if (err) console.log(err);
+          else console.log(`HistoricalData actualizado`);
+        });
+      } else {
+        console.log("hay que crearlo");
+        let value = checkField(updateField, price);
+        let data = new HistoricalData({
+          year: year,
+          month: month,
+          totalExpended: value[1],
+          totalWasted: value[0],
+          user: userOwner
+        });
+
+        data.save(err => {
+          if (err) console.log(err);
+          else console.log(`HistoricalData creado`);
+        });
+      }
     }
-    return days;
-  },
+  );
+}
+
+module.exports = {
 
   findAndCreate: rfid => {
     //console.log(idDeviceUser)
@@ -54,52 +106,8 @@ module.exports = {
       })
       .catch(e => console.log(e));
   },
-  checkField: (updateField, price) => {
-    console.log("entra a checkFields");
-    if (updateField === "totalWasted") {
-      return [price, 0];
-    } else if (updateField === "totalExpended") {
-      return [0, price];
-    }
-  },
 
-  updateHistoricalData: (updateField, price) => {
-    let today = new Date();
-    let year = today.getFullYear();
-    let month = today.getMonth() + 1;
-
-    HistoricalData.findOne({ user: userOwner, year: year, month: month }).then(
-      data => {
-        console.log(userOwner);
-        if (data) {
-          console.log("hay que actualizarlo");
-          //tengo actualizarlo
-          data[updateField] += price;
-          data.save(err => {
-            if (err) console.log(err);
-            else console.log(`HistoricalData actualizado`);
-          });
-        } else {
-          console.log("hay que crearlo");
-          let value = checkField(updateField, price);
-          let data = new HistoricalData({
-            year: year,
-            month: month,
-            totalExpended: value[1],
-            totalWasted: value[0],
-            user: userOwner
-          });
-
-          data.save(err => {
-            if (err) console.log(err);
-            else console.log(`HistoricalData creado`);
-          });
-        }
-      }
-    );
-  },
-
-  updateRemainingDays: () => {
+  updateRemainingDays: (idDeviceUser, userOwner, rbSerialNumber) => {
     Device.findOne({
       deviceId: rbSerialNumber
     })
@@ -116,7 +124,7 @@ module.exports = {
       });
   },
 
-  updateTotalWasted: () => {
+  updateTotalWasted: (idDeviceUser, userOwner) => {
     let totalWasted = 0;
     console.log(idDeviceUser);
     Product.find({ remainingDays: "caducado", device: idDeviceUser })

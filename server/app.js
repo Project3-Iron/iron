@@ -14,17 +14,18 @@ const Device = require("./models/Device");
 const ensureLoggedIn = require("./middlewares/ensureLoggedIn.js");
 const rbSerialNumber = "12345";
 const ProductDB = require("./models/ProductDB");
+const Product = require("./models/Product");
 let idDeviceUser;
 let userOwner;
 const rc522 = require("rc522");
-const moment = require("moment");
+
 var schedule = require("node-schedule");
 
 const HistoricalData = require("./models/HistoricalData");
 
-const helpers = require("./config")
+const helpers = require("./config");
 
-console.log(helpers)
+console.log(helpers);
 
 const axios = require("axios");
 mongoose.Promise = Promise;
@@ -34,14 +35,14 @@ mongoose
     console.log("Connected to Mongo!");
     Device.findOne({ deviceId: rbSerialNumber })
       .then(e => {
-       
         idDeviceUser = e._id; //id del device => user + raspberry
         userOwner = e.user; //id del usuario => asociado a la raspberry
       })
       .then(() => {
         //console.log("aqui ya tengo el valor... se supone");
         // console.log(idDeviceUser,userOwner)
-      helpers.updateTotalWasted();
+        helpers.updateRemainingDays(idDeviceUser, userOwner, rbSerialNumber);
+        helpers.updateTotalWasted(idDeviceUser, userOwner);
       });
   })
   .catch(err => {
@@ -110,7 +111,6 @@ app.use("/", index);
 const authRouter = require("./routes/auth");
 app.use("/api/auth", authRouter);
 
-const Product = require("./models/Product");
 const prodRouter = require("./routes/crud")(Product);
 
 const extended = require("./routes/extendedDevices");
@@ -133,15 +133,11 @@ console.log("Ready!!!");
 //   findAndCreate(rfidSerialNumber);
 // });
 
-
-
-
 //findAndCreate("25f3d315");
 
-
 schedule.scheduleJob("0 0 * * *", () => {
- // updateRemainingDays();
-  //updateTotalWasted();
+  // helpers.RemainingDays(idDeviceUser,userOwner, rbSerialNumber);
+  //helpers.updateTotalWasted(idDeviceUser,userOwner);
 });
 
 module.exports = app;
