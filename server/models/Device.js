@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 const deviceSchema = new Schema(
   {
     deviceId: String,
-    user: { type: Schema.Types.ObjectId, ref: "User" }
+    user: { type: Schema.Types.ObjectId, ref: "User" }, 
+    environment: {type: String}
   },
   {
     timestamps: {

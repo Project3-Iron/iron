@@ -128,10 +128,10 @@ app.use(function(req, res) {
 
 console.log("Ready!!!");
 
-// rc522(function(rfidSerialNumber) {
-//   console.log("El codigo es: ", rfidSerialNumber);
-//   findAndCreate(rfidSerialNumber);
-// });
+rc522(function(rfidSerialNumber) {
+  console.log("El codigo es: ", rfidSerialNumber);
+  this.findAndCreate(rfidSerialNumber);
+});
 
 //findAndCreate("25f3d315");
 
