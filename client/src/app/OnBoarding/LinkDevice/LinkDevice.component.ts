@@ -22,7 +22,7 @@ export class LinkDeviceComponent implements OnInit {
   goHome() {
     setTimeout(() => {
       this.router.navigate(['/home']);
-    }, 3000);
+    }, 2000);
   }
 
   linkDevice() {
