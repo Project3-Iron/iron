@@ -1,6 +1,6 @@
 <app-Nav></app-Nav>
-<div *ngIf="!linkedDevice">
-
+<div *ngIf="!linkedDevice" class="contenedor">
+<h1>Link Your Device</h1>
     <section class="form-block">
         <label>Formulario para enlazar un dispositivo</label>
         <div class="form-group">
@@ -10,7 +10,9 @@
             <label for="enviroment">Environment</label>
             <input type="text" [(ngModel)]="environment" name="environment" placeholder="Introduce el enviroment" size="45">
         </div>
-        <button type="submit" (click)="linkDevice()" class="btn btn-outline-primary btn-block">Enlazar</button>
+        <button type="submit" (click)="linkDevice()" class="prueba btn btn-outline-primary btn-block" style="
+        margin-top: 20px;
+    ">Enlazar</button>
     </section>
 
 </div>

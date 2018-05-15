@@ -1,9 +1,24 @@
 .form-block{
   margin-top: 20px;
+  text-align: center;
 }
-.btn{
+h1{
+  text-align: center;
+}
+.prueba{
   margin-top: 20px;
+}
+.btn[_ngcontent-c1] {
   width: 74%;
   margin: 0 auto;
   height: 55px;
+}
+.contenedor{
+  margin-top: 55px;
+}
+
+input{
+  margin-bottom: 25px;
+  margin-top: 10px;
+  width: 90%;
 }
