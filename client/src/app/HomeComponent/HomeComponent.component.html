@@ -20,6 +20,7 @@
   </div>
 
   <div *ngIf="devices.length != 0">    
+      <app-Nav></app-Nav>
     <h2>My Device</h2>
     <a class="btn btn-block btn-recipes btn-add" [routerLink]="['/device/config']"> ADD</a>
 

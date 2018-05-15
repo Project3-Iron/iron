@@ -20,6 +20,7 @@ import { DeviceService } from "./services/Device.service";
 import { LinkDeviceComponent } from "./OnBoarding/LinkDevice/LinkDevice.component";
 import { WindowService } from "./services/Window.service";
 import { RecipeDetailComponent } from './Recipe-detail/Recipe-detail.component';
+import { NavComponent } from './Nav/Nav.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { RecipeDetailComponent } from './Recipe-detail/Recipe-detail.component';
     ProductCardComponent,
     RecipesComponent,
     RecipeDetailComponent,
+    NavComponent
 ],
 
   imports: [
