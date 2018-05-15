@@ -1,22 +1,39 @@
 <app-Nav></app-Nav>
-<div *ngIf="!linkedDevice" class="contenedor">
-<h1>Link Your Device</h1>
-    <section class="form-block">
-        <label>Formulario para enlazar un dispositivo</label>
-        <div class="form-group">
-            <label for="deviceId">Id del dispositivo</label>
-            <input type="text" [(ngModel)]="deviceId" name="deviceId" placeholder="Introduce el Id" size="45">
+<div class="contenedor">
+  <h1>Link Your Device</h1>
+  <section class="form-block">
+    <label><h5>Form to link a device</h5></label>
+    <br>
+    <div class="form-group">
+      <label for="deviceId">Device Id</label>
+      <input type="text" [(ngModel)]="deviceId" name="deviceId" placeholder="Introduce el Id" size="45">
 
-            <label for="enviroment">Environment</label>
-            <input type="text" [(ngModel)]="environment" name="environment" placeholder="Introduce el enviroment" size="45">
+      <label for="enviroment">Environment</label>
+      <input type="text" [(ngModel)]="environment" name="environment" placeholder="Introduce el enviroment" size="45">
+    </div>
+    <div *ngIf="linkedDevice">
+      <div class="alert alert-success">
+        <div class="alert-items">
+          <div class="alert-item static">
+            <div class="alert-icon-wrapper">
+              <clr-icon class="alert-icon" shape="check-circle"></clr-icon>
+            </div>
+            <span class="alert-text">
+                Successfully linked device
+            </span>
+            <span class="alert-text">
+                You are redirecting to Home..
+            </span>
+          </div>
         </div>
-        <button type="submit" (click)="linkDevice()" class="prueba btn btn-outline-primary btn-block" style="
+      </div>
+    </div>
+    <button type="submit" (click)="linkDevice()" class="prueba btn btn-outline-primary btn-block" style="
         margin-top: 20px;
-    ">Enlazar</button>
-    </section>
+    ">Link</button>
+  </section>
 
 </div>
 
-<div *ngIf="linkedDevice">
-    <p> tu dispositivo ha sido enlazado con éxito!!!!</p>
-</div>
+
+

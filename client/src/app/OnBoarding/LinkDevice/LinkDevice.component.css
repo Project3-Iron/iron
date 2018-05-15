@@ -5,6 +5,9 @@
 h1{
   text-align: center;
 }
+h5{
+  margin-bottom: 6%;
+}
 .prueba{
   margin-top: 20px;
 }
@@ -21,4 +24,11 @@ input{
   margin-bottom: 25px;
   margin-top: 10px;
   width: 90%;
+}
+.alert-text{
+  text-align: center;
+}
+.alert{
+  width: 90%;
+  margin: 0 auto;
 }
