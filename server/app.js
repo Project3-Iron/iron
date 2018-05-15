@@ -12,15 +12,19 @@ const MongoStore = require("connect-mongo")(session);
 const cors = require("cors");
 const ensureLoggedIn = require("./middlewares/ensureLoggedIn.js");
 
+const authRouter = require("./routes/auth");
 const Device = require("./models/Device");
 const Product = require("./models/Product");
+//const HistoricalData = require("./models/HistoricalData");
 
 
-const deviceRouter = require("./routes/crud")(Device);
-const prodRouter = require("./routes/crud")(Product);
+const deviceRouter = require("./routes/crud2")(Device);
+const prodRouter = require("./routes/crud3")(Product);
+const HistoricalDataExtended = require("./routes/extendedHistorical");
+
+
 const extendedDevices = require("./routes/extendedDevices");
 const extendedProducts = require("./routes/extendedProduct");
-
 
 const axios = require("axios");
 mongoose.Promise = Promise;
@@ -85,16 +89,16 @@ app.locals.title = "Iron";
 const index = require("./routes/index");
 app.use("/", index);
 
-const authRouter = require("./routes/auth");
-app.use("/api/auth", authRouter);
 
+app.use("/api/auth", authRouter);
 
 app.use("/api/device/mydevices", extendedDevices);
 app.use("/api/device", ensureLoggedIn(), deviceRouter);
-app.use("/api/product/myProducts", extendedProducts);
 
+app.use("/api/product/myProducts", extendedProducts);
 app.use("/api/product", prodRouter);
 
+app.use("/api/historical", HistoricalDataExtended);
 
 //extended product
 // const extendedProduct = require("./routes/extendedProduct")
