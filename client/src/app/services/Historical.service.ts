@@ -1,13 +1,13 @@
 import { Injectable } from "@angular/core";
 import { Http } from "@angular/http";
 import { Observable } from "rxjs/Rx";
-
+import {ProductService} from '../services/Product.service'
 @Injectable()
 export class HistoricalService {
   BASE_URL = "http://localhost:3000";
   options: any = { withCredentials: true };
 
-  constructor(private http: Http) {}
+  constructor(private http: Http,  private productService: ProductService) {}
   handleError(e) {
     return Observable.throw(e.json().message);
   }

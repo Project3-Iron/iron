@@ -7,6 +7,7 @@ import { ProductComponent } from "./Product/Product.component";
 import { RecipesComponent } from "./Recipes/Recipes.component";
 import { RecipeDetailComponent } from "./Recipe-detail/Recipe-detail.component";
 import { DataChartComponent } from "./Data-Chart/Data-Chart.component";
+import {ProductsChartComponent } from "./Products-Chart/Products-Chart.component";
 
 export const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
@@ -17,5 +18,6 @@ export const routes: Routes = [
   { path: "products", component: ProductComponent },
   { path: "recipes", component: RecipesComponent },
   { path: "recipes/detail", component: RecipeDetailComponent },
-  { path: "historical", component: DataChartComponent }
+  { path: "historical", component: DataChartComponent }, 
+  { path: "historical/detail", component: ProductsChartComponent }, 
 ];

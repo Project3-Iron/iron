@@ -20,17 +20,11 @@
     <app-InitialWelcome></app-InitialWelcome>
   </div>
 
-<<<<<<< HEAD
-  <div *ngIf="devices.length != 0">    
-      <app-Nav></app-Nav>
-    <h2>My Device</h2>
-    <a class="btn btn-block btn-recipes btn-add" [routerLink]="['/device/config']"> ADD</a>
-=======
   <div *ngIf="devices.length != 0">
+      <app-Nav></app-Nav>
     <h2>Tus dispositivos</h2>
     <a class="btn" [routerLink]="['/historical']"> Historical Data</a>
     <a class="btn" [routerLink]="['/device/config']"> AÑADIR</a>
->>>>>>> e404495ceac7b897fbaf508fb8d1bc9efc0eeec5
 
     <!-- <a [routerLink]="['/device/myDevices']">Ver mis dispositivos</a> -->
 
@@ -57,13 +51,6 @@
     </div>
   </div>
 
-<<<<<<< HEAD
   <button class="btn-recipes btn btn-warning btn-block" (click)="sessionService.logout().subscribe()">Log Out</button>
   
-=======
-
-  <button (click)="sessionService.logout().subscribe()">Log Out</button>
-
- 
->>>>>>> e404495ceac7b897fbaf508fb8d1bc9efc0eeec5
 </div>
