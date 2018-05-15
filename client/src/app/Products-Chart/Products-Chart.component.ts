@@ -79,7 +79,7 @@ export class ProductsChartComponent implements OnInit {
   ];
 
   public radarChartData: any = [];
-  public radarChartType: string = "radar";
+  public radarChartType: string = "pie";
 
   // events
   public chartClicked(e: any): void {
