@@ -1,27 +1,70 @@
 <clr-main-container>
-  <clr-header class="header-6 barra">
-  
-          <div class="branding"*ngIf="!sessionService.user">
-              <a [routerLink]="['']">Home</a>
-          </div>
-  
-          <div class="branding" *ngIf="sessionService.user">
-              
-                  <!-- <clr-icon shape="coin-bag"></clr-icon> -->
-                  <a [routerLink]="['']">
-                          <span class="title">Iron</span></a>
-          
-          <div class="header-nav lateral"[clr-nav-level]="1">
-                  <a class="nav-link" [routerLink]="['']"><span class="nav-text"><img src="http://res.cloudinary.com/lloren27/image/upload/v1526245531/outline_add_circle_outline_white_18dp.png"> ADD</span></a>
-                  <a class="nav-link" (click)="gotoBets()"><span class="nav-text">Ver apuestas pendientes</span></a>
-                  <a class="nav-link"[routerLink]="['/statistics']"><span class="nav-text">Resultado/Estadisticas</span></a>
-                  <a class="nav-link" (click)="logout()"><span class="nav-text">Logout</span></a>
-          </div>
-             
-          </div>
-      
-      </clr-header>
-  <script src="node_modules/chart.js/src/chart.js"></script>
-  <router-outlet></router-outlet>
-  
+  <clr-header class="header-6">
+
+    <div class="branding" *ngIf="!sessionService.user">
+      <a [routerLink]="['']">Home</a>
+    </div>
+
+    <div class="branding" *ngIf="sessionService.user">
+
+      <a [routerLink]="['']" class="link-logo">
+        <img class="img-logo" src="http://pngimg.com/uploads/snowflakes/snowflakes_PNG7580.png" alt="logo-snowflake">
+      </a>
+
+      <div class="header-nav" [clr-nav-level]="1">
+        <a class="nav-link" [routerLink]="['/device/config']">
+          <span class="nav-text">
+            <img src="http://res.cloudinary.com/lloren27/image/upload/v1526245531/outline_add_circle_outline_white_18dp.png"> Add Device</span>
+        </a>
+        <a class="nav-link" (click)="gotoBets()">
+          <span class="nav-text">Ver apuestas pendientes</span>
+        </a>
+        <a class="nav-link" [routerLink]="['/statistics']">
+          <span class="nav-text">Resultado/Estadisticas</span>
+        </a>
+        <a class="nav-link" (click)="logout()">
+          <span class="nav-text">Logout</span>
+        </a>
+      </div>
+
+    </div>
+
+  </clr-header>
 </clr-main-container>
+
+
+
+
+<!-- <clr-main-container>
+  <clr-header class="header-6 barra">
+
+    <div class="branding" *ngIf="!sessionService.user">
+      <a [routerLink]="['']">Home</a>
+    </div>
+
+    <div class="branding" *ngIf="sessionService.user">
+
+      <a [routerLink]="['']" class="link-logo">
+        <img src="http://pngimg.com/uploads/snowflakes/snowflakes_PNG7580.png" alt="logo-snowflake">
+      </a>
+
+      <div class="header-nav lateral" [clr-nav-level]="1">
+        <a class="nav-link" [routerLink]="['']">
+          <span class="nav-text">
+            <img src="http://res.cloudinary.com/lloren27/image/upload/v1526245531/outline_add_circle_outline_white_18dp.png"> ADD</span>
+        </a>
+        <a class="nav-link" (click)="gotoBets()">
+          <span class="nav-text">Ver apuestas pendientes</span>
+        </a>
+        <a class="nav-link" [routerLink]="['/statistics']">
+          <span class="nav-text">Resultado/Estadisticas</span>
+        </a>
+        <a class="nav-link" (click)="logout()">
+          <span class="nav-text">Logout</span>
+        </a>
+      </div>
+
+    </div>
+
+  </clr-header>
+</clr-main-container> -->

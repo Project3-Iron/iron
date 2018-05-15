@@ -11,6 +11,7 @@ import { ProductService } from "../services/Product.service";
 })
 export class HomeComponent implements OnInit {
   devices: Array<Object> = [];
+
   constructor(
     public sessionService: SessionService,
     public router: Router,

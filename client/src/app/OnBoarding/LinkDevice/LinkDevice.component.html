@@ -1,3 +1,4 @@
+<app-Nav></app-Nav>
 <div *ngIf="!linkedDevice">
 
     <section class="form-block">
@@ -9,7 +10,7 @@
             <label for="enviroment">Environment</label>
             <input type="text" [(ngModel)]="environment" name="environment" placeholder="Introduce el enviroment" size="45">
         </div>
-        <button type="submit" (click)="linkDevice()" class="btn btn-primary">Enlazar</button>
+        <button type="submit" (click)="linkDevice()" class="btn btn-outline-primary btn-block">Enlazar</button>
     </section>
 
 </div>
