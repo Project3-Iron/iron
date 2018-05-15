@@ -5,7 +5,7 @@ const Product = require("../models/Product");
 const Device = require("../models/Device");
 
 router.get("/:id", (req, res) => {
-  Product.find({ device: req.params.id }).then(products => {
+  Product.find({ device: req.params.id, status: true }).then(products => {
     if (products) {
       return res.status(200).json(products);
     } else {
