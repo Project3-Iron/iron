@@ -12,8 +12,9 @@ const productSchema = new Schema(
     insertDate: Date,
     category: {
       type: String,
-      enum: ["Carne", "Pescado", "Fruta", "Verdura", "Lácteo"]
+      enum: ["Meat", "Fish", "Fruit", "Vegetables", "Dairy", "Others"]
     },
+    remainingDays: String,
     quantity: Number,
     status: Boolean,
     ingredients: String,

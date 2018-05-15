@@ -24,6 +24,7 @@ import { NavComponent } from "./Nav/Nav.component";
 import { DataChartComponent } from "./Data-Chart/Data-Chart.component";
 import { ChartsModule } from "ng2-charts";
 import { HistoricalService } from "./services/Historical.service";
+import { ProductsChartComponent } from "./Products-Chart/Products-Chart.component";
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { HistoricalService } from "./services/Historical.service";
     RecipesComponent,
     RecipeDetailComponent,
     NavComponent,
-    DataChartComponent
+    DataChartComponent, 
+    ProductsChartComponent
   ],
 
   imports: [

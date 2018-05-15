@@ -15,10 +15,13 @@ export class ProductService {
   }
 
   getAllProducts(deviceId) {
-
     return this.http.get(`${this.BASE_URL}/api/product/myProducts/${deviceId}`, this.options)
       .map(res => res.json())
       .catch(this.handleError);
+  }
+
+  getAllProductsUser(){
+    
   }
 }
 
