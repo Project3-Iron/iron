@@ -17,11 +17,9 @@ const Device = require("./models/Device");
 const Product = require("./models/Product");
 //const HistoricalData = require("./models/HistoricalData");
 
-
-const deviceRouter = require("./routes/crud2")(Device);
-const prodRouter = require("./routes/crud3")(Product);
+const deviceRouter = require("./routes/crudDevice")(Device);
+const prodRouter = require("./routes/crudProduct")(Product);
 const HistoricalDataExtended = require("./routes/extendedHistorical");
-
 
 const extendedDevices = require("./routes/extendedDevices");
 const extendedProducts = require("./routes/extendedProduct");
@@ -88,7 +86,6 @@ app.locals.title = "Iron";
 
 const index = require("./routes/index");
 app.use("/", index);
-
 
 app.use("/api/auth", authRouter);
 

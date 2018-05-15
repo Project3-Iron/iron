@@ -30,7 +30,6 @@ export class DeviceService {
   }
 
   deleteDevice(deviceId) {
-    console.log("??")
     return this.http
       .delete(`${this.BASE_URL}/api/device/${deviceId}`, this.options)
       .map(res => {
