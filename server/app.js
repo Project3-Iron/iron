@@ -42,7 +42,7 @@ mongoose
     
         // console.log(idDeviceUser,userOwner)
        helpers.updateRemainingDays(idDeviceUser, userOwner, rbSerialNumber);
-    helpers.updateTotalWasted(idDeviceUser, userOwner);
+   // helpers.updateTotalWasted(idDeviceUser, userOwner);
       });
   })
   .catch(err => {
