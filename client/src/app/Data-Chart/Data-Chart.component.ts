@@ -67,4 +67,10 @@ export class DataChartComponent implements OnInit {
   public chartHovered(e: any): void {
     console.log(e);
   }
+
+  public changeChart():void {
+    this.barChartType = this.barChartType === 'line' ? 'bar' : 'line';
+   // this.pieChartType = this.pieChartType === 'doughnut' ? 'pie' : 'doughnut';
+  }
+
 }

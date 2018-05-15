@@ -1,3 +1,4 @@
+<h1>Mis gastos</h1>
 <div *ngIf="showChart">
   <div style="display: block">
     <canvas #myChart baseChart
@@ -9,5 +10,5 @@
             (chartHover)="chartHovered($event)"
             (chartClick)="chartClicked($event)"></canvas>
   </div>
-  <button (click)="randomize()">Update</button>
+  <button (click)="randomize()" class="btn btn-primary">Change Chart</button>
 </div>
