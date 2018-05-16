@@ -5,7 +5,7 @@ const Product = require("./models/Product");
 const moment = require("moment");
 
 const remainingDates = date => {
- // moment.locale("es");
+  // moment.locale("es");
   let days = moment(date, "YYYYMMDD").fromNow();
 
   if (days.includes("hour")) {
@@ -14,16 +14,15 @@ const remainingDates = date => {
     days = "expired";
   }
   return days;
-}
-const  checkField = (updateField, price) => {
+};
+const checkField = (updateField, price) => {
   console.log("entra a checkFields");
   if (updateField === "totalWasted") {
     return [price, 0];
   } else if (updateField === "totalExpended") {
     return [0, price];
   }
-}
-
+};
 
 const updateHistoricalData = (updateField, price) => {
   let today = new Date();
@@ -59,11 +58,10 @@ const updateHistoricalData = (updateField, price) => {
       }
     }
   );
-}
+};
 
 module.exports = {
-
-  findAndCreate: rfid => {
+  findAndCreate: (idDeviceUser, rfid) => {
     //console.log(idDeviceUser)
     ProductDB.findOne({
       code: rfid
@@ -72,8 +70,14 @@ module.exports = {
         Product.findOne({ code: e.code }).then(item => {
           if (item) {
             item.status = !item.status;
+
+            if (item.status) {
+              //status = true, hay que actualizar el insertDate
+              item.insertDate = Date.now();
+            }
+
             item.save(() => {
-              console.log(`Status cambiado`);
+              console.log(`Status y insertDate cambiado`);
             });
           } else {
             //   let remainingDates = remainingDates(e.dueDate);
@@ -96,7 +100,7 @@ module.exports = {
               device: idDeviceUser,
               remainingDays: remainingDates(dueDate)
             });
-            updateHistoricalData(newProduct.price);
+            updateHistoricalData("totalExpended", newProduct.price);
             newProduct.save(err => {
               if (err) console.log(err);
               else console.log(`Producto creado`);
@@ -126,16 +130,16 @@ module.exports = {
 
   updateTotalWasted: (idDeviceUser, userOwner) => {
     let totalWasted = 0;
-    console.log(idDeviceUser);
-    Product.find({ remainingDays: "caducado", device: idDeviceUser })
+    console.log("total wasted");
+    Product.find({ remainingDays: "expired", device: idDeviceUser })
       .then(products => {
-        //console.log(products);
+        console.log(products);
         products.forEach(product => {
           totalWasted += product.price;
         });
       })
       .then(e => {
-        //updateHistoricalData("totalWasted", totalWasted);
+        updateHistoricalData("totalWasted", totalWasted);
       });
   }
 };

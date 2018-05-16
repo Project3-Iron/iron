@@ -39,10 +39,10 @@ mongoose
         userOwner = e.user; //id del usuario => asociado a la raspberry
       })
       .then(() => {
-        //console.log("aqui ya tengo el valor... se supone");
+    
         // console.log(idDeviceUser,userOwner)
-        helpers.updateRemainingDays(idDeviceUser, userOwner, rbSerialNumber);
-        helpers.updateTotalWasted(idDeviceUser, userOwner);
+       helpers.updateRemainingDays(idDeviceUser, userOwner, rbSerialNumber);
+   // helpers.updateTotalWasted(idDeviceUser, userOwner);
       });
   })
   .catch(err => {
@@ -130,8 +130,8 @@ console.log("Ready!!!");
 
 rc522(function(rfidSerialNumber) {
   console.log("El codigo es: ", rfidSerialNumber);
-  this.findAndCreate(rfidSerialNumber);
-});
+  helpers.findAndCreate(idDeviceUser,userOwner,rfidSerialNumber);
+})
 
 //findAndCreate("25f3d315");
 
