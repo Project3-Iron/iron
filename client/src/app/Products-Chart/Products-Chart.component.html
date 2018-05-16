@@ -18,4 +18,16 @@
 <div *ngIf="showChart" style="display: block">
   <canvas baseChart [datasets]="radarChartData" [labels]="radarChartLabels" [chartType]="radarChartType" (chartHover)="chartHovered($event)"
     [options]="chartOptions" (chartClick)="chartClicked($event)"></canvas>
+
+
+    <div class="col-md-6">
+    <table class="table table-responsive table-condensed">
+      <tr>
+        <th *ngFor="let label of radarChartLabels">{{label}}</th>
+      </tr>
+      <tr *ngFor="let d of radarChartData">
+        <td *ngFor="let label of radarChartLabels; let j=index">{{d && d.data[j]}}</td>
+      </tr>
+    </table>
 </div>
+  </div>

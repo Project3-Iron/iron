@@ -27,7 +27,7 @@ export class RecipesService {
       )
       .map(res => {
         //console.log("+++++", res);
-        console.log("ARaay+++++", this.productsRecipes);
+       // console.log("ARaay+++++", this.productsRecipes);
         return res.json();
       })
       .catch(this.handleError);

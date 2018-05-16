@@ -3,6 +3,8 @@
   height: 20px;
 }
 .shop-logo{
+  width: 22px;
+  height: 20px;
   margin-top: -6px;
 }
 .card-footer{
@@ -10,4 +12,10 @@
 }
 .expired{
   margin-left: auto;
+}
+
+.plus-logo{
+  margin-top: -6px;
+  width: 22px;
+  height: 20px;
 }

@@ -12,6 +12,7 @@ export class ProductCardComponent implements OnInit {
   @Output() outGetItem: EventEmitter<any> = new EventEmitter();
   @Output() outGetDelete: EventEmitter<any> = new EventEmitter();
 
+  showInfo :boolean =  false; 
   query: String = "";
   constructor(private windowService: WindowService) {}
 
@@ -43,5 +44,7 @@ export class ProductCardComponent implements OnInit {
 
   }
 
-
+  showMoreInfo(){
+    this.showInfo = !this.showInfo; 
+  }
 }

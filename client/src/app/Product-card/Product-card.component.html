@@ -5,24 +5,41 @@
   <div class="card">
     <div class="card-block">
       <h3 class="card-title">{{products.name}}</h3>
-      <p class="card-text">
+      <div class="card-text">
         Brand: {{products.brand}}
-        <br> Category: {{products.category}}
-        <br> Ingredients: {{products.ingredients}}
         <br> Price: {{products.price}} €
-        <br> Code: {{products.code}}
         <br> Due date: {{products.remainingDays}}
-      </p>
+
+        <div *ngIf="showInfo"> Ingredients: {{products.ingredients}}
+          <br> Category: {{products.category}}
+          <br> Code: {{products.code}}
+          <br> {{products.insertDate | date}}
+        </div>
+      </div>
     </div>
     <div class="card-footer">
       <button class="btn btn-info-outline" (click)="buyProductECI(products.name,products.brand)">
-        <img class="shop-logo" src="http://res.cloudinary.com/dzpmxapkq/image/upload/v1526461028/shopping-basket_1.png" alt="shop-logo">
+        <img class="shop-logo" src="http://res.cloudinary.com/dzpmxapkq/image/upload/v1526484160/shopping-basket.png" alt="shop-logo">
       </button>
+
       <button *ngIf="!status" (click)="outInfo(products.name)" class="btn btn-info-outline">Add</button>
       <button *ngIf="status" (click)="outDelete(products.name)" class="btn btn-warning-outline">Discard</button>
+
       <div class="expired">
-      <p *ngIf="products.remainingDays.includes('expired') || products.remainingDays.includes('today')" class="btn btn-warning-outline"> {{products.remainingDays}} <img class="img-alert" src="https://www.freeiconspng.com/uploads/alert-icon-red-11.png" alt=""> </p>
+        <p *ngIf="products.remainingDays.includes('expired') || products.remainingDays.includes('today')" class="btn btn-warning-outline">
+        {{products.remainingDays}}
+          <img class="img-alert" src="https://www.freeiconspng.com/uploads/alert-icon-red-11.png"
+            alt=""> </p>
+
       </div>
+
+      <button *ngIf="!showInfo" (click)="showMoreInfo()">
+          <img class="plus-logo" src="http://res.cloudinary.com/dzpmxapkq/image/upload/v1526472395/plus.png" alt="shop-logo">
+        </button>
+  
+        <button *ngIf="showInfo" (click)="showMoreInfo()">
+            <img class="plus-logo" src="http://res.cloudinary.com/dzpmxapkq/image/upload/v1526473156/minus.png" alt="shop-logo">
+          </button>
     </div>
   </div>
 </div>
