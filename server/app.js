@@ -130,7 +130,7 @@ console.log("Ready!!!");
 
 rc522(function(rfidSerialNumber) {
   console.log("El codigo es: ", rfidSerialNumber);
-  helpers.findAndCreate(rfidSerialNumber);
+  helpers.findAndCreate(idDeviceUser,userOwner,rfidSerialNumber);
 })
 
 //findAndCreate("25f3d315");

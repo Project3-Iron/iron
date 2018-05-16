@@ -63,7 +63,7 @@ const updateHistoricalData = (updateField, price) => {
 
 module.exports = {
 
-  findAndCreate: rfid => {
+  findAndCreate: (idDeviceUser,rfid) => {
     //console.log(idDeviceUser)
     ProductDB.findOne({
       code: rfid
@@ -104,7 +104,7 @@ module.exports = {
               device: idDeviceUser,
               remainingDays: remainingDates(dueDate)
             });
-            updateHistoricalData(newProduct.price);
+            updateHistoricalData("totalExpended",newProduct.price);
             newProduct.save(err => {
               if (err) console.log(err);
               else console.log(`Producto creado`);
