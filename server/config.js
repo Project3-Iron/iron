@@ -24,10 +24,12 @@ const checkField = (updateField, price) => {
   }
 };
 
-const updateHistoricalData = (updateField, price) => {
+const updateHistoricalData = (updateField, price, userOwner) => {
+  console.log("llama a updateHistoricalData")
   let today = new Date();
   let year = today.getFullYear();
-  let month = today.getMonth() + 1;
+  let numToMonth = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+  let month = numToMonth[today.getMonth()]
 
   HistoricalData.findOne({ user: userOwner, year: year, month: month }).then(
     data => {
@@ -61,12 +63,14 @@ const updateHistoricalData = (updateField, price) => {
 };
 
 module.exports = {
-  findAndCreate: (idDeviceUser, rfid) => {
+  
+  findAndCreate: (idDeviceUser,userOwner, rfid) => {
     //console.log(idDeviceUser)
     ProductDB.findOne({
       code: rfid
     })
       .then(e => {
+        console.log(e)
         Product.findOne({ code: e.code }).then(item => {
           if (item) {
             item.status = !item.status;
@@ -81,9 +85,9 @@ module.exports = {
             });
           } else {
             //   let remainingDates = remainingDates(e.dueDate);
-            let dueDate = new Date(
-              new Date().getTime() + 24 * 60 * 60 * 1000 * 3
-            );
+            // let dueDate = new Date(
+            //   new Date().getTime() + 24 * 60 * 60 * 1000 * 3
+            // );
 
             let newProduct = new Product({
               name: e.name,
@@ -91,16 +95,16 @@ module.exports = {
               code: e.code,
               price: e.price,
               measure: e.measure,
-              dueDate: dueDate,
+              dueDate: e.dueDate,
               insertDate: Date.now(),
               category: e.category,
               quantity: e.quantity,
               status: true,
               ingredients: e.ingredients,
               device: idDeviceUser,
-              remainingDays: remainingDates(dueDate)
+              remainingDays: remainingDates(e.dueDate)
             });
-            updateHistoricalData("totalExpended", newProduct.price);
+            updateHistoricalData("totalExpended", newProduct.price, userOwner);
             newProduct.save(err => {
               if (err) console.log(err);
               else console.log(`Producto creado`);
@@ -139,7 +143,7 @@ module.exports = {
         });
       })
       .then(e => {
-        updateHistoricalData("totalWasted", totalWasted);
+        updateHistoricalData("totalWasted", totalWasted, userOwner);
       });
   }
 };

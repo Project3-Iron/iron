@@ -8,9 +8,10 @@ const productDBSchema = new Schema(
     code: String,
     price: Number,
     measure: String,
+    dueDate: Date,
     category: {
       type: String,
-      enum: ["Carne", "Pescado", "Fruta", "Verdura", "Lácteo"]
+      enum: ["Meat", "Fish", "Fruit", "Vegetables", "Dairy", "Others"]
     },
     quantity: Number,
     status: Boolean,
