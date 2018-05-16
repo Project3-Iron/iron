@@ -2,9 +2,10 @@ import { Injectable } from "@angular/core";
 import { Http } from "@angular/http";
 import { Observable } from "rxjs/Rx";
 import {ProductService} from '../services/Product.service'
+import { environment } from "../../environments/environment";
 @Injectable()
 export class HistoricalService {
-  BASE_URL = "http://localhost:3000";
+  BASE_URL = environment.BASEURL;
   options: any = { withCredentials: true };
 
   constructor(private http: Http,  private productService: ProductService) {}

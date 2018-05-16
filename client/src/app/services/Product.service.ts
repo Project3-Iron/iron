@@ -2,10 +2,11 @@ import { Injectable, EventEmitter } from "@angular/core";
 import { Http } from "@angular/http";
 import { Observable } from "rxjs/Rx";
 import "rxjs";
+import { environment } from "../../environments/environment.prod";
 
 @Injectable()
 export class ProductService {
-  BASE_URL = "http://localhost:3000";
+  BASE_URL = environment.BASEURL;
   deviceId: String = "";
   options: any = { withCredentials: true };
   constructor(private http: Http) {}

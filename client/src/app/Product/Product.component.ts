@@ -37,7 +37,7 @@ export class ProductComponent implements OnInit {
 
   getItem(product) {
     this.status$ = true;
-    console.log(this.recipes$);
+   // console.log(this.recipes$);
     if (this.recipes$.indexOf(product) === -1) {
       this.recipes$.push(product);
     }
@@ -45,7 +45,7 @@ export class ProductComponent implements OnInit {
   }
 
   deleteItem(product) {
-    console.log(this.recipes$);
+   // console.log(this.recipes$);
     this.status$ = false;
     this.recipes$.splice(this.recipes$.indexOf((product) - 1, 1));
   }
@@ -53,7 +53,7 @@ export class ProductComponent implements OnInit {
   sum(product) {
     this.products$.forEach(e => {
       this.price += e.price;
-      console.log(this.price);
+    //  console.log(this.price);
     });
   }
 }

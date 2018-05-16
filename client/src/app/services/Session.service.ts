@@ -1,12 +1,12 @@
-import { Injectable, EventEmitter } from '@angular/core';
-import { Http } from '@angular/http';
-import { Observable } from 'rxjs/Rx';
-import 'rxjs';
+import { Injectable, EventEmitter } from "@angular/core";
+import { Http } from "@angular/http";
+import { Observable } from "rxjs/Rx";
+import "rxjs";
+import { environment } from "../../environments/environment.prod";
 
 @Injectable()
 export class SessionService {
-
-  BASE_URL = 'http://localhost:3000';
+  BASE_URL = environment.BASEURL;
   user: any;
   userEvent: EventEmitter<any> = new EventEmitter();
   options: any = { withCredentials: true };

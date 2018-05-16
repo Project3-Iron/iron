@@ -17,7 +17,7 @@ export class ProductCardComponent implements OnInit {
   constructor(private windowService: WindowService) {}
 
   ngOnInit() {
-    console.log(this.products);
+   // console.log(this.products);
   }
 
   outInfo(product) {

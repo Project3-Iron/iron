@@ -62,7 +62,7 @@ export class DataChartComponent implements OnInit {
     });
 
     this.showChart = true;
-    console.log(this.barChartLabels)
+   // console.log(this.barChartLabels)
     return this.barChartLabels;
   }
 
@@ -85,7 +85,7 @@ export class DataChartComponent implements OnInit {
       { data: totalExpendedArr, label: "Expended" },
       { data: totalWastedArr, label: "Wasted" }
     ];
-    console.log(this.barChartData);
+    //console.log(this.barChartData);
     return this.barChartData;
   }
 

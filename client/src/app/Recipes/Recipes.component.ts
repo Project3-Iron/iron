@@ -23,12 +23,12 @@ export class RecipesComponent implements OnInit {
   ngOnInit() {
     this.recipesService.getRecipes().subscribe(data => {
       this.recipes = data.hits;
-      console.log(data.hits)
+     // console.log(data.hits)
     });
 
   }
   recipeDetail(recipe){
-    console.log(recipe)
+   // console.log(recipe)
     this.recipesService.recipe = recipe;
     this.router.navigate(['/recipes/detail'])
   }
