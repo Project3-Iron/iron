@@ -15,7 +15,7 @@ export class RecipesComponent implements OnInit {
   recipes: Array<Object> = [];
   constructor(
     private productService: ProductService,
-    //public sessionService: SessionService,
+    public sessionService: SessionService,
     private recipesService: RecipesService, 
     public router: Router
   ) {}
