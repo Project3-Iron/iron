@@ -9,7 +9,6 @@
         <a [routerLink]="['/login']" class="btn btn-primary">Login</a>
         <a [routerLink]="['/signup']" class="btn btn-primary">Sign Up</a>
       </div>
-
     </form>
   </div>
 </div>
@@ -23,11 +22,9 @@
   <div *ngIf="devices.length != 0">    
       <app-Nav></app-Nav>
     <h2>My Device</h2>
-    <a class="btn btn-block btn-recipes btn-add" [routerLink]="['/device/config']"> ADD</a>
-    <a class="btn btn-block btn-recipes btn-add" [routerLink]="['/historical']"> Historical Data</a>
+    <button class="btn btn-block btn-recipes btn-add" (click)="goDevice()">ADD</button>
+    <button class="btn btn-block btn-recipes btn-add" (click)="goHistorical()">Historical Data</button>
 
-
-    <!-- <a [routerLink]="['/device/myDevices']">Ver mis dispositivos</a> -->
 
     <div *ngFor="let device of devices, let odd=odd, let even=even">
       <div class="col-xs-12 col-sm-4">

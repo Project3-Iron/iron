@@ -41,4 +41,12 @@ export class HomeComponent implements OnInit {
       return (this.devices = devices);
     });
   }
+
+  goDevice() {
+    this.router.navigate(['/device/config']);
+  }
+
+  goHistorical() {
+    this.router.navigate(['/historical']);
+  }
 }
