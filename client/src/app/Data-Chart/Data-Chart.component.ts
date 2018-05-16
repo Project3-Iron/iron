@@ -23,6 +23,7 @@ export class DataChartComponent implements OnInit {
   historical: Array<historicalData>;
   showChart: boolean = false;
   year: number = 2017;
+  years: Array<String> = ["2017", "2018"];
   ngOnInit() {
     this.historicalService.getHistoricalData().subscribe(historical => {
       this.historical = historical;
@@ -41,6 +42,18 @@ export class DataChartComponent implements OnInit {
 
   public barChartData: any[] = [];
 
+  refreshYear(yearSelected) {
+    this.changeChart();
+    this.barChartData = [];
+    this.barChartLabels = [];
+    this.showChart = false;
+    this.year = parseInt(yearSelected);
+
+    this.barChartData = this.getData();
+    this.barChartLabels = this.getLabels();
+   
+   
+  }
   getLabels() {
     this.historical.forEach(e => {
       if (this.year === e.year) {
@@ -49,25 +62,30 @@ export class DataChartComponent implements OnInit {
     });
 
     this.showChart = true;
-
+    console.log(this.barChartLabels)
     return this.barChartLabels;
   }
 
   getData() {
     let totalExpendedArr = [];
     this.historical.forEach(e => {
-      totalExpendedArr.push(e.totalExpended);
+      if (this.year === e.year) {
+        totalExpendedArr.push(e.totalExpended);
+      }
     });
 
     let totalWastedArr = [];
     this.historical.forEach(e => {
-      totalWastedArr.push(e.totalWasted);
+      if (this.year === e.year) {
+        totalWastedArr.push(e.totalWasted);
+      }
     });
 
     this.barChartData = [
       { data: totalExpendedArr, label: "Expended" },
       { data: totalWastedArr, label: "Wasted" }
     ];
+    console.log(this.barChartData);
     return this.barChartData;
   }
 

@@ -1,5 +1,18 @@
 <app-Nav></app-Nav>
 <h1>My Expenses</h1>
+<div class="container">
+  <h4>Change year</h4>
+  <div class="select" (change)="refreshYear(select.value)" >
+    <select #select id="selects_1">
+      <option *ngFor="let year of years" [value]="year">
+        {{year}}
+      </option>
+    </select>
+  </div>
+  <!-- <button class="btn btn-outline-info btn-add" (click)="refreshYear(select.value)">See graph</button> -->
+
+</div>
+
 <div *ngIf="showChart">
   <div style="display: block">
     <canvas #myChart baseChart
