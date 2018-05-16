@@ -1,3 +1,14 @@
+.login-wrapper{
+  /* background: url("https://media3.bosch-home.com/Images/800x/MCIM02026056_frigorificos-combis.jpg"); */
+  background: url("https://media3.bosch-home.com/Images/1600x/MCIM02638161_frigorificos-de-colores-variostyle.gif");
+  /* https://media3.bosch-home.com/Images/800x/MCIM02689011_KSF36PI3P.jpg */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: 58%;
+}
+.login{
+  background: none;
+}
 img{
   width: 200px;
   margin: 0 auto
