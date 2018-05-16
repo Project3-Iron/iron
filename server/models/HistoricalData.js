@@ -5,7 +5,7 @@ const historicalSchema = new Schema(
   {
     user: { type: Schema.Types.ObjectId, ref: "User" },
     year: Number,
-    month: Number,
+    month: String,
     totalExpended: Number,
     totalWasted: Number
   },

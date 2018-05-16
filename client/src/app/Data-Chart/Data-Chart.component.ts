@@ -4,8 +4,8 @@ import { Router } from "@angular/router";
 
 interface historicalData {
   user: String;
-  year: Number;
-  month: Number;
+  year: number;
+  month: String;
   totalExpended: Number;
   totalWasted: Number;
 }
@@ -16,9 +16,13 @@ interface historicalData {
   styleUrls: ["./Data-Chart.component.css"]
 })
 export class DataChartComponent implements OnInit {
-  constructor(public historicalService: HistoricalService, public router: Router) {}
+  constructor(
+    public historicalService: HistoricalService,
+    public router: Router
+  ) {}
   historical: Array<historicalData>;
   showChart: boolean = false;
+  year: number = 2017;
   ngOnInit() {
     this.historicalService.getHistoricalData().subscribe(historical => {
       this.historical = historical;
@@ -31,7 +35,7 @@ export class DataChartComponent implements OnInit {
     scaleShowVerticalLines: false,
     responsive: true
   };
-  public barChartLabels: Number[] = [];
+  public barChartLabels: String[] = [];
   public barChartType: string = "bar";
   public barChartLegend: boolean = true;
 
@@ -39,9 +43,13 @@ export class DataChartComponent implements OnInit {
 
   getLabels() {
     this.historical.forEach(e => {
-      this.barChartLabels.push(e.month);
+      if (this.year === e.year) {
+        this.barChartLabels.push(e.month);
+      }
     });
+
     this.showChart = true;
+
     return this.barChartLabels;
   }
 
@@ -56,13 +64,16 @@ export class DataChartComponent implements OnInit {
       totalWastedArr.push(e.totalWasted);
     });
 
-    this.barChartData = [{ data: totalExpendedArr, label:"Gastado"}, { data: totalWastedArr, label:"Desperdiciado" }];
+    this.barChartData = [
+      { data: totalExpendedArr, label: "Expended" },
+      { data: totalWastedArr, label: "Wasted" }
+    ];
     return this.barChartData;
   }
 
-    goHistorical() {
-      this.router.navigate(['/historical/detail']);
-    }
+  goHistorical() {
+    this.router.navigate(["/historical/detail"]);
+  }
 
   // events
   public chartClicked(e: any): void {
@@ -73,9 +84,8 @@ export class DataChartComponent implements OnInit {
     console.log(e);
   }
 
-  public changeChart():void {
-    this.barChartType = this.barChartType === 'line' ? 'bar' : 'line';
-   // this.pieChartType = this.pieChartType === 'doughnut' ? 'pie' : 'doughnut';
+  public changeChart(): void {
+    this.barChartType = this.barChartType === "line" ? "bar" : "line";
+    // this.pieChartType = this.pieChartType === 'doughnut' ? 'pie' : 'doughnut';
   }
-
 }
