@@ -25,6 +25,7 @@ input{
 }
 .alert-text{
   text-align: center;
+  margin: 0 auto;
 }
 .alert{
   width: 90%;
@@ -32,4 +33,5 @@ input{
 }
 span{
   text-align: center;
+  margin: 0 auto;
 }

@@ -17,6 +17,7 @@ export class LinkDeviceComponent implements OnInit {
   deviceId: String = '';
   environment: String = '';
   linkedDevice: Boolean = false;
+  error: String = '';
   ngOnInit() { }
 
   goHome() {
@@ -26,15 +27,20 @@ export class LinkDeviceComponent implements OnInit {
   }
 
   linkDevice() {
-    let deviceIdUser = {
-      deviceId: this.deviceId,
-      user: this.sessionService.user._id,
-      environment: this.environment
-    };
-    this.deviceService
-      .linkDevice(deviceIdUser)
-      .subscribe(
-        device => (this.linkedDevice = true), err => console.log(err));
-    this.goHome();
+    if(this.deviceId == '' || this.environment == ''){
+      this.error = 'Fill all';
+    } else {
+      let deviceIdUser = {
+        deviceId: this.deviceId,
+        user: this.sessionService.user._id,
+        environment: this.environment
+      };
+      this.deviceService
+        .linkDevice(deviceIdUser)
+        .subscribe(
+          device => (this.linkedDevice = true), err => console.log(err));
+      this.goHome();
+    }
+
   }
 }
