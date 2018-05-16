@@ -1,21 +1,33 @@
-.img-alert{
+.img-alert {
   width: 22px;
   height: 20px;
 }
-.shop-logo{
+.shop-logo {
   width: 22px;
   height: 20px;
   margin-top: -6px;
 }
-.card-footer{
+.card-footer {
   display: flex;
 }
-.expired{
+.expired {
   margin-left: auto;
 }
 
-.plus-logo{
+.plus-logo {
   margin-top: -6px;
   width: 22px;
   height: 20px;
+}
+
+.plus-father {
+  display: flex;
+}
+
+
+
+.prueba{
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
 }
