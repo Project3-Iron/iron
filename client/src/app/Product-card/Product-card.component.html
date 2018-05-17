@@ -5,21 +5,19 @@
   <div class="card">
     <div class="card-block">
       <div class="prueba">
-          <h3 class="card-title">{{products.name}}</h3>
-          <div class="plus-father">
-              <div class="plus-son">
-                <button *ngIf="!showInfo" (click)="showMoreInfo()">
-                  <img class="plus-logo" src="http://res.cloudinary.com/dzpmxapkq/image/upload/v1526472395/plus.png" alt="shop-logo">
-                </button>        
-                <button *ngIf="showInfo" (click)="showMoreInfo()">
-                  <img class="plus-logo" src="http://res.cloudinary.com/dzpmxapkq/image/upload/v1526473156/minus.png" alt="shop-logo">
-                </button>
-              </div>
-              
-            </div>
-          
+        <h3 class="card-title">{{products.name}}</h3>
+        <div class="plus-father">
+          <div class="plus-son">
+            <button *ngIf="!showInfo" (click)="showMoreInfo()">
+              <img class="plus-logo" src="http://res.cloudinary.com/dzpmxapkq/image/upload/v1526472395/plus.png" alt="shop-logo">
+            </button>
+            <button *ngIf="showInfo" (click)="showMoreInfo()">
+              <img class="plus-logo" src="http://res.cloudinary.com/dzpmxapkq/image/upload/v1526473156/minus.png" alt="shop-logo">
+            </button>
+          </div>
+        </div>
       </div>
-    
+
       <div class="card-text">
         Brand: {{products.brand}}
         <br> Price: {{products.price}} €
@@ -44,10 +42,7 @@
         <p *ngIf="products.remainingDays.includes('expired') || products.remainingDays.includes('today')" class="btn btn-warning-outline">
           {{products.remainingDays}}
           <img class="img-alert" src="https://www.freeiconspng.com/uploads/alert-icon-red-11.png" alt=""> </p>
-
       </div>
-
-
     </div>
   </div>
 </div>

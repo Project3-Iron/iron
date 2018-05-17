@@ -27,6 +27,7 @@ import { HistoricalService } from "./services/Historical.service";
 import { ProductsChartComponent } from "./Products-Chart/Products-Chart.component";
 import { EditDeviceComponent } from "./Edit-device/Edit-device.component";
 import { SecurityService } from "./services/Security.service";
+import { ErrorComponent } from './Error/Error.component';
 
 @NgModule({
   declarations: [
@@ -45,8 +46,9 @@ import { SecurityService } from "./services/Security.service";
     NavComponent,
     DataChartComponent,
     ProductsChartComponent,
-    EditDeviceComponent
-  ],
+    EditDeviceComponent,
+    ErrorComponent
+],
 
   imports: [
     BrowserModule,

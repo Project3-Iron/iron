@@ -30,6 +30,7 @@ export class ProductComponent implements OnInit {
   recipes$: Array<any> = [];
   status$: Boolean;
   price: Number = 0;
+  showLeftovers: boolean = false;
 
   constructor(
     private productService: ProductService,
@@ -41,12 +42,13 @@ export class ProductComponent implements OnInit {
     this.productService
       .getAllProducts(this.productService.deviceId)
       .subscribe(products => {
+        if (products.length === 0) {
+          this.showLeftovers = true;
+        }
         this.products$ = products;
-
         this.sum(this.products$);
       }, err => (this.error = err));
   }
-
 
   getItem(product) {
     this.status$ = true;

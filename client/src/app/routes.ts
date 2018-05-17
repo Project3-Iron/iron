@@ -50,5 +50,6 @@ export const routes: Routes = [
     path: "historical/detail",
     component: ProductsChartComponent,
     canActivate: [SecurityService]
-  }
+  }, 
+  { path: "**", redirectTo: "home", pathMatch: "full" },
 ];
