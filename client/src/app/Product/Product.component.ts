@@ -41,21 +41,12 @@ export class ProductComponent implements OnInit {
     this.productService
       .getAllProducts(this.productService.deviceId)
       .subscribe(products => {
-        this.products$ = this.orderBy(products);
+        this.products$ = products;
 
         this.sum(this.products$);
       }, err => (this.error = err));
   }
 
-  orderBy(products) {
-    console.log(products);
-    products.sort((a: Product, b: Product) => {
-      let substract = parseInt(b.dueDate) - parseInt(a.dueDate)
-      return substract;
-    });
-
-    return products;
-  }
 
   getItem(product) {
     this.status$ = true;

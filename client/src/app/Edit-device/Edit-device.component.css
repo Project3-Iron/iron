@@ -1,0 +1,37 @@
+.btn {
+  width: 74% !important;
+  margin: 20px auto !important;
+  height: 55px !important;
+}
+.form-block{
+  margin-top: 20px;
+  text-align: center;
+}
+h1{
+  text-align: center;
+  margin-top: 20%;
+}
+h5{
+  margin-bottom: 6%;
+}
+.contenedor{
+  margin-top: 55px;
+}
+
+input{
+  margin-bottom: 25px;
+  margin-top: 10px;
+  width: 90%;
+}
+.alert-text{
+  text-align: center;
+  margin: 0 auto;
+}
+.alert{
+  width: 90%;
+  margin: 0 auto;
+}
+span{
+  text-align: center;
+  margin: 0 auto;
+}

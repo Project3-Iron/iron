@@ -49,7 +49,12 @@ h4,h3,p{
 }
 .card-footer{
   display: flex;
+  align-content: space-between
 }
 .trash-footer{
+ /* // margin-left: auto; */
+}
+
+.trash{
   margin-left: auto;
 }
