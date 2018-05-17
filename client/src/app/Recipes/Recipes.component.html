@@ -1,33 +1,27 @@
 <app-Nav></app-Nav>
 <h1>Recipes</h1>
-<div *ngFor="let recipe of recipes">
-  <div class="col-xs-12 col-sm-4">
-      <div class="card">
-          <div class="card-block">
-              <div class="progress top">
-                  <progress value="100" max="100"></progress>
+<div *ngIf="!loading">
+<img src="https://cdn.dribbble.com/users/8424/screenshots/1036999/dots_2.gif" alt="">
+</div>
+<div *ngIf="loading">
+    <div *ngFor="let recipe of recipes">
+      <div class="col-xs-12 col-sm-4">
+          <div class="card">
+              <div class="card-block">
+                  <div class="progress top">
+                      <progress value="100" max="100"></progress>
+                  </div>
+                  <h4 class="card-title">{{recipe.recipe.label}}</h4>
+                  <div class="card-img">
+                      <img src="{{recipe.recipe.image}}">
+                  </div>
+                 
+                  <!-- <p class="card-text">Yield: {{recipe.recipe.yield}}</p> -->
               </div>
-              <h4 class="card-title">{{recipe.recipe.label}}</h4>
-              <div class="card-img">
-                  <img src="{{recipe.recipe.image}}">
+              <div class="card-footer">
+                  <button class="btn btn-info btn-block" (click)="recipeDetail(recipe)">View more</button>
               </div>
-             
-              <!-- <p class="card-text">Yield: {{recipe.recipe.yield}}</p> -->
-          </div>
-          <div class="card-footer">
-              <button class="btn btn-info btn-block" (click)="recipeDetail(recipe)">View more</button>
           </div>
       </div>
-  </div>
+    </div>
 </div>
-
-<clr-modal [(clrModalOpen)]="basic">
-    <h3 class="modal-title">I have a nice title</h3>
-    <div class="modal-body">
-        <p>But not much to say...</p>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-outline" (click)="basic = false">Cancel</button>
-        <button type="button" class="btn btn-primary" (click)="basic = false">Ok</button>
-    </div>
-</clr-modal>
