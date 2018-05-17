@@ -12,7 +12,9 @@
       </option>
     </select>
   </div>
-  <button *ngIf="!showChart" class="btn btn-outline-info btn-add" (click)="seeGraph(select.value)">See graph</button>
+  <div class="container-see">
+    <button *ngIf="!showChart" class="btn btn-outline-info btn-add" (click)="seeGraph(select.value)">See graph</button>
+  </div>
 </div>
 
 <div *ngIf="showChart" style="display: block">
@@ -20,7 +22,7 @@
     [options]="chartOptions" (chartClick)="chartClicked($event)"></canvas>
 
 
-    <div class="col-md-6">
+  <div class="container-see">
     <table class="table table-responsive table-condensed">
       <tr>
         <th *ngFor="let label of radarChartLabels">{{label}}</th>
@@ -29,5 +31,5 @@
         <td *ngFor="let label of radarChartLabels; let j=index">{{d && d.data[j]}}</td>
       </tr>
     </table>
-</div>
   </div>
+</div>

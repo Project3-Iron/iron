@@ -1,12 +1,12 @@
 h1{
   text-align: center;
-  margin: 20%;
+  margin-top: 20%;
 }
 .btn-add {
   font-size: 17px;
-  width: 100%;
+  width: 80%;
   margin: 10px auto;
-  height: 60px;
+  height: 50px;
 }
 .button-container{
   display: flex;
