@@ -9,7 +9,7 @@ router.get("/:id", (req, res) => {
     .sort({ dueDate: 1 })
     .then(products => {
       if (products) {
-        console.log(products);
+      //  console.log(products);
         return res.status(200).json(products);
       } else {
         return res.status(500).json({ message: "Not products for that user" });

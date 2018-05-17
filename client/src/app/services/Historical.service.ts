@@ -17,7 +17,7 @@ export class HistoricalService {
     return this.http
       .get(`${this.BASE_URL}/api/historical`, this.options)
       .map(res => {
-        console.log(res);
+       // console.log(res);
         return res.json();
       })
       .catch(this.handleError);
