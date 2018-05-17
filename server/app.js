@@ -93,9 +93,9 @@ app.use("/api/device/mydevices", extendedDevices);
 app.use("/api/device", ensureLoggedIn(), deviceRouter);
 
 app.use("/api/product/myProducts", extendedProducts);
-app.use("/api/product", prodRouter);
+app.use("/api/product", ensureLoggedIn(), prodRouter);
 
-app.use("/api/historical", HistoricalDataExtended);
+app.use("/api/historical", ensureLoggedIn(), HistoricalDataExtended);
 
 //extended product
 // const extendedProduct = require("./routes/extendedProduct")
