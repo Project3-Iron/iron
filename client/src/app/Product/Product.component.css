@@ -19,3 +19,11 @@ h1{
 .recipes{
   padding-top: 192px;
 }
+.btn-success{
+  border-color: #60b515;
+  background-color: #dff0d0;
+  color: #565656 !important;
+}
+.btn{
+  color: #565656 !important;
+}
