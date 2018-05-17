@@ -20,10 +20,14 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.deviceService.getDevicesUser().subscribe(devices => {
-     // console.log(devices);
-      return (this.devices = devices);
-    });
+    if (this.sessionService.isLoggedIn()) {
+      this.deviceService.getDevicesUser().subscribe(
+        devices => (this.devices = devices),
+        err => {
+         // console.log(err);
+        }
+      );
+    }
   }
 
   viewProducts(deviceId) {
@@ -43,10 +47,10 @@ export class HomeComponent implements OnInit {
   }
 
   goDevice() {
-    this.router.navigate(['/device/config']);
+    this.router.navigate(["/device/config"]);
   }
 
   goHistorical() {
-    this.router.navigate(['/historical']);
+    this.router.navigate(["/historical"]);
   }
 }

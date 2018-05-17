@@ -3,7 +3,7 @@ import { Http } from "@angular/http";
 import { Observable } from "rxjs/Rx";
 import "rxjs";
 import { resolve } from "q";
-import { environment } from "../../environments/environment.prod";
+import { environment } from "../../environments/environment";
 
 @Injectable()
 export class DeviceService {
@@ -34,8 +34,9 @@ export class DeviceService {
     return this.http
       .delete(`${this.BASE_URL}/api/device/${deviceId}`, this.options)
       .map(res => {
-      //  console.log(res)
-        return res.json()})
+        //  console.log(res)
+        return res.json();
+      })
       .catch(this.handleError);
   }
 }

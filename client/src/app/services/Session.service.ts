@@ -2,7 +2,7 @@ import { Injectable, EventEmitter } from "@angular/core";
 import { Http } from "@angular/http";
 import { Observable } from "rxjs/Rx";
 import "rxjs";
-import { environment } from "../../environments/environment.prod";
+import { environment } from "../../environments/environment";
 
 @Injectable()
 export class SessionService {

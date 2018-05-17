@@ -8,8 +8,10 @@ router.get("/", (req, res) => {
     if (items) {
       return res.status(200).json(items);
     } else {
-      return res.status(500).json({ message: "The user has not devices" });
+      return res.status(500).json({ message: "The user doesn't have historical data" });
     }
+  }).catch(() => {
+    return res.status(500).json({ message: "No user logged" })
   });
 });
 

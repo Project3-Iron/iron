@@ -2,7 +2,7 @@ import { Injectable, EventEmitter } from "@angular/core";
 import { Http } from "@angular/http";
 import { Observable } from "rxjs/Rx";
 import "rxjs";
-import { environment } from "../../environments/environment.prod";
+import { environment } from "../../environments/environment";
 
 @Injectable()
 export class ProductService {
@@ -16,14 +16,13 @@ export class ProductService {
   }
 
   getAllProducts(deviceId) {
-    return this.http.get(`${this.BASE_URL}/api/product/myProducts/${deviceId}`, this.options)
+    return this.http
+      .get(`${this.BASE_URL}/api/product/myProducts/${deviceId}`, this.options)
       .map(res => res.json())
       .catch(this.handleError);
   }
 
-  getAllProductsUser(){
-    
-  }
+  getAllProductsUser() {}
 }
 
 /* 
