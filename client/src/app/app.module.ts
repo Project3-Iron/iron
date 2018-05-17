@@ -26,6 +26,7 @@ import { ChartsModule } from "ng2-charts";
 import { HistoricalService } from "./services/Historical.service";
 import { ProductsChartComponent } from "./Products-Chart/Products-Chart.component";
 import { EditDeviceComponent } from './Edit-device/Edit-device.component';
+import { ErrorComponent } from './Error/Error.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { EditDeviceComponent } from './Edit-device/Edit-device.component';
     NavComponent,
     DataChartComponent, 
     ProductsChartComponent,
-    EditDeviceComponent
+    EditDeviceComponent,
+    ErrorComponent
 ],
 
   imports: [

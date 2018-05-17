@@ -1,19 +1,34 @@
 <app-Nav></app-Nav>
 <h1>Products</h1>
 <clr-alert>
-        <div class="alert-item">
-            <span class="alert-text">
-                Total Amount: {{price | number}} €
-            </span>
-        </div>
+    <div class="alert-item">
+        <span class="alert-text">
+            Total Amount: {{price | number}} €
+        </span>
+    </div>
 </clr-alert>
-<div class="btn-recipes"*ngIf="recipes$.length === 0">
-        <button disabled="true" class="btn btn-success btn-block">Show Recipes</button>
+
+<div class="btn-recipes" *ngIf="recipes$.length === 0">
+    <button disabled="true" class="btn btn-success btn-block">Show Recipes</button>
 </div>
-<div class="btn-recipes" *ngIf="recipes$.length != 0" >
+
+
+   
+  
+<div *ngIf="products$.length === 0"  >
+        <img class="container"src="http://res.cloudinary.com/dzpmxapkq/image/upload/v1526566693/leftovers-cyan.gif">
+
+<!-- <div class="alert-items">
+        <div class="alert-item static">
+          <span class="alert-text">
+           You don't have any products yet...
+          </span>
+        </div>
+    </div> -->
+    </div>
+<div class="btn-recipes" *ngIf="recipes$.length != 0">
     <a [routerLink]="['/recipes']" class="btn btn-success btn-block">Show Recipes</a>
 </div>
 <div *ngFor="let e of products$">
     <app-Product-card [products]="e" (outGetItem)="getItem($event)" (outGetDelete)="deleteItem($event)"></app-Product-card>
 </div>
-
