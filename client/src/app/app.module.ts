@@ -25,8 +25,8 @@ import { DataChartComponent } from "./Data-Chart/Data-Chart.component";
 import { ChartsModule } from "ng2-charts";
 import { HistoricalService } from "./services/Historical.service";
 import { ProductsChartComponent } from "./Products-Chart/Products-Chart.component";
-import { EditDeviceComponent } from './Edit-device/Edit-device.component';
-
+import { EditDeviceComponent } from "./Edit-device/Edit-device.component";
+import { SecurityService } from "./services/Security.service";
 
 @NgModule({
   declarations: [
@@ -43,10 +43,10 @@ import { EditDeviceComponent } from './Edit-device/Edit-device.component';
     RecipesComponent,
     RecipeDetailComponent,
     NavComponent,
-    DataChartComponent, 
+    DataChartComponent,
     ProductsChartComponent,
     EditDeviceComponent
-],
+  ],
 
   imports: [
     BrowserModule,
@@ -62,7 +62,8 @@ import { EditDeviceComponent } from './Edit-device/Edit-device.component';
     ProductService,
     RecipesService,
     WindowService,
-    HistoricalService
+    HistoricalService,
+    SecurityService
   ],
   bootstrap: [AppComponent]
 })
