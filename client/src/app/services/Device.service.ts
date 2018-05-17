@@ -39,4 +39,25 @@ export class DeviceService {
       })
       .catch(this.handleError);
   }
+
+  getInfoDevice(id){
+    return this.http
+    .get(`${this.BASE_URL}/api/device/${id}`, this.options)
+    .map(res => {
+      //  console.log(res)
+      return res.json();
+    })
+    .catch(this.handleError);
+  }
+
+
+  editDevice(id, editedDevice){
+    return this.http
+    .put(`${this.BASE_URL}/api/device/${id}`,editedDevice, this.options)
+    .map(res => {
+      //  console.log(res)
+      return res.json();
+    })
+    .catch(this.handleError);
+  }
 }

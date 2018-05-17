@@ -29,9 +29,11 @@ const simpleCrud = Model => {
       .catch(e => next(e));
   });
 
-  // Retrive DETAIL
+  // EDIT DETAIL
   router.put("/:id", (req, res, next) => {
+ 
     const updates = _.pick(req.body, fields);
+    console.log(req.body)
     Model.findByIdAndUpdate(req.params.id, updates, { new: true })
       .then(object => res.json(object))
       .catch(e => next(e));

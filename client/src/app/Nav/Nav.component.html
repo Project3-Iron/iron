@@ -1,5 +1,6 @@
 <clr-main-container>
   <clr-header class="header-6">
+
     <div class="branding" *ngIf="!sessionService.user">
       <a [routerLink]="['']">Home</a>
     </div>
@@ -8,15 +9,15 @@
         <img class="img-logo" src="http://pngimg.com/uploads/snowflakes/snowflakes_PNG7580.png" alt="logo-snowflake">
       </a>
       <div class="header-nav" [clr-nav-level]="1">
+          <a class="nav-link">
+            <span class="nav-text">Hello, {{sessionService.user.username}}!</span>
+          </a>
         <a class="nav-link" [routerLink]="['/device/config']">
           <span class="nav-text">
-            <!-- <img src="http://res.cloudinary.com/lloren27/image/upload/v1526245531/outline_add_circle_outline_white_18dp.png">  -->
             Add Device
           </span>
         </a>
-        <!-- <a class="nav-link" (click)="gotoBets()">
-          <span class="nav-text">Historical</span>
-        </a> -->
+
         <a class="nav-link" [routerLink]="['/historical']">
           <span class="nav-text">Historical</span>
         </a>

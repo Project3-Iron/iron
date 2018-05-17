@@ -13,16 +13,19 @@ import { Router } from '@angular/router';
 })
 export class RecipesComponent implements OnInit {
   recipes: Array<Object> = [];
+  loading: boolean  = false; 
+
   constructor(
     private productService: ProductService,
     public sessionService: SessionService,
     private recipesService: RecipesService, 
     public router: Router
   ) {}
-
+  
   ngOnInit() {
     this.recipesService.getRecipes().subscribe(data => {
       this.recipes = data.hits;
+      this.loading = true; 
      // console.log(data.hits)
     });
 

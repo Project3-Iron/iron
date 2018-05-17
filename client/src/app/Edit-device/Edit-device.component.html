@@ -1,0 +1,20 @@
+<app-Nav></app-Nav>
+<div class="contenedor">
+  <h1>Edit your device</h1>
+  <section class="form-block">
+    <label><h5>Form to edit a device</h5></label>
+    <br>
+    <div class="form-group">
+      <form ngNativeValidate>
+      <label for="deviceId">Device Id</label>
+      <input type="text" [(ngModel)]="deviceId" name="deviceId" placeholder="Enter the Id" size="45" required>
+
+      <label for="enviroment">Environment</label>
+      <input type="text" [(ngModel)]="environment" name="environment" placeholder="Enter the enviroment" size="45" required>
+    </form>
+    </div>
+    <button type="submit" (click)="editDevice()" class="btn btn-outline-primary btn-block" style="
+        margin-top: 20px;
+    ">Edit</button>
+  </section>
+</div>

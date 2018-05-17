@@ -40,6 +40,10 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  editDevice(id) {
+    this.router.navigate(["device",id])
+  }
+
   getDevicesUser() {
     this.deviceService.getDevicesUser().subscribe(devices => {
       return (this.devices = devices);

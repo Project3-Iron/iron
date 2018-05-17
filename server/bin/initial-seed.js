@@ -5,6 +5,7 @@ const moment = require("moment");
 
 const Product = require("../models/Product");
 const ProductDB = require("../models/ProductDB");
+let device = "5afd60bb712eb091464324bb";
 
 const remainingDates = date => {
   moment.locale("es");
@@ -31,7 +32,7 @@ const product = [
     quantity: "1",
     status: true,
     ingredients: "Carrot",
-    device: "5af5671a4cbf0a01061af596",
+    device: device,
     remainingDays: "in 6 days"
   },
   {
@@ -46,7 +47,7 @@ const product = [
     quantity: "1",
     status: true,
     ingredients: "Pasteurized cow skimmed milk",
-    device: "5af5671a4cbf0a01061af596",
+    device: device,
     remainingDays: "in 10 days"
   },
   {
@@ -62,7 +63,7 @@ const product = [
     status: true,
     ingredients:
       " turkey breast (67%), water, antioxidants (E-325, E-301, E-331iii), salt, lactose, dextrose, stabilizers (E-451, E-407, E-410), preservative (E- 250) and aromas",
-    device: "5af5671a4cbf0a01061af596",
+    device: device,
     remainingDays: "in 12 days"
   },
   {
@@ -77,7 +78,7 @@ const product = [
     quantity: "1",
     status: true,
     ingredients: "100% Egg Whites",
-    device: "5af5671a4cbf0a01061af596",
+    device: device,
     remainingDays: "in 7 days"
   },
   {
@@ -92,7 +93,7 @@ const product = [
     quantity: "1",
     status: true,
     ingredients: "Anchovy fillets, olive oil and salt.",
-    device: "5af5671a4cbf0a01061af596",
+    device: device,
     remainingDays: "in 40 days"
   }
 ];
