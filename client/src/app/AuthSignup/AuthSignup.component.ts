@@ -11,7 +11,8 @@ export class AuthSignupComponent implements OnInit {
   formInfo = {
     username: "",
     email: "",
-    password: ""
+    password: "",
+    confirmPassword: ""
   };
   error = "";
 
@@ -20,11 +21,15 @@ export class AuthSignupComponent implements OnInit {
   ngOnInit() { }
 
   signup() {
-    this.sessionService
+    if (this.formInfo.password === this.formInfo.confirmPassword) {
+      this.sessionService
       .signup(this.formInfo)
       .subscribe(
         () => this.router.navigate(['/home']),
         (err) => { return this.error = err }
       );
+    } else {
+      this.error = 'Password do not match';
+    }
   }
 }
