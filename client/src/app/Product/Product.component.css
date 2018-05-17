@@ -1,6 +1,6 @@
 h1{
   text-align: center;
-  margin-top: 20%;
+  margin-top: 10%;
 }
 .alert-text{
   text-align: center;
@@ -9,4 +9,13 @@ h1{
   margin-top: 10px;
   padding-right: .5rem;
   padding-left: .5rem;
+}
+.cabecera{
+  margin-top: 8%;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+}
+.recipes{
+  padding-top: 192px;
 }
