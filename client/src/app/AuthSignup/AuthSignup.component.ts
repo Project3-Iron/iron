@@ -15,16 +15,16 @@ export class AuthSignupComponent implements OnInit {
   };
   error = "";
 
-  constructor(public sessionService: SessionService, public router: Router) {}
+  constructor(public sessionService: SessionService, public router: Router) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   signup() {
     this.sessionService
       .signup(this.formInfo)
       .subscribe(
         () => this.router.navigate(['/home']),
-        (err) => {return this.error = err}
+        (err) => { return this.error = err }
       );
   }
 }

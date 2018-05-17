@@ -21,11 +21,13 @@
 
   <div *ngIf="devices.length != 0">
     <app-Nav></app-Nav>
-    <h2>My Device</h2>
-    <button class="btn btn-block btn-recipes btn-add" (click)="goDevice()">ADD</button>
-    <button class="btn btn-block btn-recipes btn-add" (click)="goHistorical()">Historical Data</button>
-
-
+    <div class="cabecera">
+      <h2>My Device</h2>
+    </div>
+    <div class="button-header">
+      <button class="btn btn-block btn-recipes btn-add" (click)="goDevice()">ADD</button>
+      <button class="btn btn-block btn-recipes btn-add" (click)="goHistorical()">Historical Data</button>
+    </div>
     <div *ngFor="let device of devices, let odd=odd, let even=even">
       <div class="col-xs-12 col-sm-4">
         <div class="card">

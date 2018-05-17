@@ -53,3 +53,12 @@ h4,h3,p{
 .trash-footer{
   margin-left: auto;
 }
+.cabecera{
+  width: 100%;
+  position: fixed;
+  z-index: 100;
+  background: white;
+}
+.button-header{
+  padding-top: 120px;
+}
