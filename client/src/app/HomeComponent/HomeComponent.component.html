@@ -1,11 +1,11 @@
 <div class="general" *ngIf="!sessionService.user">
   <div class="login-wrapper">
     <form class="login">
+     
       <label class="title">
-        <h1 class="welcome">Welcome to Iron</h1>
+        <h1 class="welcome">iR<img class="logo-iron" src="https://png.icons8.com/android/1600/snowflake.png" alt="logo-iron">n</h1>
       </label>
-      <!-- <img src="https://png.icons8.com/android/1600/snowflake.png" alt="logo-iron"> -->
-      <div class="login-group">
+   <div class="login-group">
         <a [routerLink]="['/login']" class="btn btn-primary">Login</a>
         <a [routerLink]="['/signup']" class="btn btn-primary">Sign Up</a>
       </div>

@@ -1,0 +1,14 @@
+.welcome{
+  font-weight: 900;
+ text-align: center;
+ margin-top: 10px;
+ font-size: 50px;
+}
+
+.logo-iron{
+  width: 50px;
+}
+
+.login-group{
+  padding: 1rem 0 0 0 !important;
+}

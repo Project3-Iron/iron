@@ -51,7 +51,7 @@ const product = [
     remainingDays: "in 10 days"
   },
   {
-    name: "turkey breast",
+    name: "Turkey breast",
     brand: "El Corte Ingles",
     code: "",
     price: 1.79,

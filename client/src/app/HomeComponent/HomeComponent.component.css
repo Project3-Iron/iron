@@ -5,11 +5,13 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position-x: 58%;
+  background-color: rgba(255,255,255,0.4)
   /* filter:blur(5px);
   z-index: -1; */
 }
 .login{
   background: none;
+  background-color: rgba(255,255,255,0.4);
 }
 img{
   width: 200px;
@@ -66,4 +68,15 @@ h4,h3,p{
 }
 .button-header{
   padding-top: 120px;
+}
+
+.welcome{
+  font-weight: 900;
+ text-align: center;
+ margin-top: 10px;
+ font-size: 50px;
+}
+
+.logo-iron{
+  width: 50px;
 }
