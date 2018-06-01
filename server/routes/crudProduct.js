@@ -44,7 +44,6 @@ const simpleCrud = Model => {
         console.log(err, a);
         return res.json({ message: `SUCESSFUL DELETE ${req.params.id}` });
       })
-
       .catch(e => next(e));
   });
   return router;

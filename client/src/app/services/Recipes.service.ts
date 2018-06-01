@@ -19,6 +19,7 @@ export class RecipesService {
   getRecipes() {
 
     this.productsRecipes.forEach(e => {
+      
       return this.concatQuery += `${e}+`;
     });
     return this.http
